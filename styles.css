@@ -1660,3 +1660,6 @@ ul, ol {
         display: none;
     }
 }
+.dropdown.open .dropdown-menu {
+  display: block;
+}

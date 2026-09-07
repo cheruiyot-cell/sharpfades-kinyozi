@@ -192,3 +192,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+// Toggle dropdown on click
+const dropdown = document.querySelector('.dropdown');
+const dropdownToggle = document.querySelector('.dropdown-toggle');
+
+dropdownToggle.addEventListener('click', (e) => {
+  e.preventDefault(); // prevent immediate scroll
+  dropdown.classList.toggle('open');
+});
+
+// Close when clicking outside
+document.addEventListener('click', (e) => {
+  if (!dropdown.contains(e.target)) {
+    dropdown.classList.remove('open');
+  }
+});

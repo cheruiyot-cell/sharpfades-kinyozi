@@ -5,7 +5,8 @@
     --clr-dark: #0D0D0D;
     --clr-dark-surface: #1A1A1A;
     --clr-gold: #C89B5A;
-    --clr-gold-dark: #8A6A2B; /* improved contrast */
+    --clr-gold-dark: #8A6A2B;
+    --clr-gold-light: #D4AF37;      /* NEW: lighter gold for dark bg */
     --clr-charcoal: #2C2C2C;
     --clr-text-primary: #121212;
     --clr-text-secondary: #4A4A4A;
@@ -51,7 +52,6 @@
 html {
     -webkit-text-size-adjust: 100%;
     overflow-x: clip;
-    /* smooth scroll handled in JS */
 }
 
 body {
@@ -69,7 +69,7 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
-    border: none; /* removes any obsolete border attributes */
+    border: none;
 }
 
 a {
@@ -111,7 +111,7 @@ ul, ol {
 }
 
 :focus-visible {
-    outline: 2px solid var(--clr-gold-dark); /* improved contrast */
+    outline: 2px solid var(--clr-gold-dark);
     outline-offset: 2px;
 }
 
@@ -181,7 +181,6 @@ ul, ol {
     box-shadow: 0 4px 16px rgba(18, 140, 126, 0.25);
 }
 
-/* removed infinite pulse, replaced with static subtle glow */
 .btn-whatsapp::after {
     content: '';
     position: absolute;
@@ -360,7 +359,7 @@ ul, ol {
 .logo-accent {
     font-family: var(--font-accent);
     font-size: 1.8rem;
-    color: var(--clr-gold-dark); /* use darker gold for contrast */
+    color: var(--clr-gold-dark);
     margin-left: 2px;
     line-height: 1;
 }
@@ -458,6 +457,40 @@ ul, ol {
     background: linear-gradient(135deg, #fdfbf7 0%, #f0ebe3 100%);
     overflow: hidden;
 }
+
+/* ─── NEW: Dark hero variant for image backgrounds ─── */
+.hero.hero-dark {
+    color: #fff;
+}
+.hero.hero-dark .hero-content h1 {
+    color: #fff;
+}
+.hero.hero-dark .hero-content h1 .text-gold {
+    color: var(--clr-gold-light);   /* lighter gold for contrast */
+}
+.hero.hero-dark .hero-cursive {
+    color: var(--clr-gold-light);
+}
+.hero.hero-dark .hero-sub {
+    color: rgba(255, 255, 255, 0.88);
+}
+.hero.hero-dark .hero-note {
+    color: rgba(255, 255, 255, 0.75);
+}
+.hero.hero-dark .hero-note strong {
+    color: #fff;
+}
+.hero.hero-dark .btn-outline {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.6);
+}
+.hero.hero-dark .btn-outline:hover {
+    background: #fff;
+    color: var(--clr-dark);
+    border-color: #fff;
+}
+/* ─── end new styles ─── */
+
 .hero-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1601,7 +1634,7 @@ ul, ol {
     }
 
     .whatsapp-live-indicator {
-        bottom: 85px; /* offset for mobile sticky bar */
+        bottom: 85px;
         right: 1rem;
         font-size: 0.75rem;
         padding: 0.4rem 0.8rem;
@@ -1618,7 +1651,7 @@ ul, ol {
     }
 
     .category-nav {
-        top: 60px; /* adjust for mobile header */
+        top: 60px;
     }
 }
 

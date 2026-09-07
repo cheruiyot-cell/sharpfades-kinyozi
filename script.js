@@ -1,8 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ===== Unified Scroll Handler (Header, Mobile Sticky Bar, Back-to-Top) =====
+    // Detect touch/hover capability for disabling tilt/magnetic effects on mobile
+    const isTouchDevice = window.matchMedia('(hover: none)').matches;
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+    // ===== Unified Scroll Handler (Header, Progress Bar, Mobile Sticky Bar, Back-to-Top) =====
     const header = document.getElementById('site-header');
     const mobileStickyBar = document.getElementById('mobile-sticky-bar');
     const backToTop = document.getElementById('back-to-top');
+    const progressBar = document.getElementById('scroll-progress');
     const scrollOffset = 50;
     const stickyBarThreshold = 600;
     const backToTopThreshold = 400;
@@ -17,6 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (backToTop) {
             backToTop.classList.toggle('visible', scrolled > backToTopThreshold);
+        }
+        // Update scroll progress bar
+        if (progressBar) {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrolled / scrollHeight) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        }
+        // Parallax on hero image (reduced intensity on mobile)
+        const heroImage = document.querySelector('.hero-image img');
+        if (heroImage) {
+            const factor = isMobile ? 0.05 : 0.15;
+            heroImage.style.transform = `translateY(${scrolled * factor}px)`;
         }
     }
 
@@ -33,17 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.querySelector('.nav-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     if (navToggle && mobileMenu) {
-        // Helper to manage focus
-        const focusMenu = () => {
-            const firstLink = mobileMenu.querySelector('a');
-            if (firstLink) firstLink.focus();
-        };
         const closeMenu = () => {
             navToggle.setAttribute('aria-expanded', 'false');
             navToggle.setAttribute('aria-label', 'Open navigation');
             mobileMenu.classList.remove('open');
             document.body.style.overflow = '';
-            // Return focus to toggle
             navToggle.focus();
         };
 
@@ -55,18 +66,17 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileMenu.classList.toggle('open');
             document.body.style.overflow = expanded ? '' : 'hidden';
             if (!expanded) {
-                // just opened
-                setTimeout(focusMenu, 100); // allow animation
+                setTimeout(() => {
+                    const firstLink = mobileMenu.querySelector('a');
+                    if (firstLink) firstLink.focus();
+                }, 100);
             } else {
-                // just closed
                 navToggle.focus();
             }
         });
 
         mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                closeMenu();
-            });
+            link.addEventListener('click', closeMenu);
         });
 
         document.addEventListener('keydown', (e) => {
@@ -191,19 +201,71 @@ document.addEventListener('DOMContentLoaded', () => {
             window.open(whatsappUrl, '_blank', 'noopener');
         });
     }
+
+    // ===== Staggered Hero Title Reveal =====
+    const heroWords = document.querySelectorAll('.hero-title-word');
+    if (heroWords.length) {
+        heroWords.forEach((word, index) => {
+            setTimeout(() => {
+                word.classList.add('visible');
+            }, 100 + index * 80);
+        });
+    }
+
+    // ===== 3D Tilt on Cards (only on devices that support hover) =====
+    if (!isTouchDevice) {
+        const tiltElements = document.querySelectorAll('.service-card, .package-card, .gallery-grid figure');
+
+        tiltElements.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -8;
+                const rotateY = ((x - centerX) / centerX) * 8;
+
+                card.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(600px) rotateX(0) rotateY(0)';
+            });
+        });
+    }
+
+    // ===== Magnetic Buttons (only on devices that support hover) =====
+    if (!isTouchDevice) {
+        const magneticButtons = document.querySelectorAll('.btn-whatsapp, .btn-outline');
+        magneticButtons.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+    }
 });
-// Toggle dropdown on click
+
+// Toggle dropdown on click (existing)
 const dropdown = document.querySelector('.dropdown');
 const dropdownToggle = document.querySelector('.dropdown-toggle');
 
-dropdownToggle.addEventListener('click', (e) => {
-  e.preventDefault(); // prevent immediate scroll
-  dropdown.classList.toggle('open');
-});
+if (dropdownToggle) {
+    dropdownToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        dropdown.classList.toggle('open');
+    });
 
-// Close when clicking outside
-document.addEventListener('click', (e) => {
-  if (!dropdown.contains(e.target)) {
-    dropdown.classList.remove('open');
-  }
-});
+    document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('open');
+        }
+    });
+}

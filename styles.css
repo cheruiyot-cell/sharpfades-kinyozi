@@ -6,7 +6,7 @@
     --clr-dark-surface: #1A1A1A;
     --clr-gold: #C89B5A;
     --clr-gold-dark: #8A6A2B;
-    --clr-gold-light: #D4AF37;      /* NEW: lighter gold for dark bg */
+    --clr-gold-light: #D4AF37;
     --clr-charcoal: #2C2C2C;
     --clr-text-primary: #121212;
     --clr-text-secondary: #4A4A4A;
@@ -63,6 +63,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; /* smooth momentum on iOS */
 }
 
 img {
@@ -127,6 +128,14 @@ ul, ol {
         opacity: 1 !important;
         transform: none !important;
     }
+    .mobile-menu.open ul li,
+    .mobile-sticky-bar .btn-whatsapp,
+    .hero-title-word {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }
 
 /* ===== No-JS Fallback ===== */
@@ -161,6 +170,7 @@ ul, ol {
     white-space: nowrap;
     position: relative;
     overflow: hidden;
+    transition: transform 0.15s ease-out, box-shadow var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
 }
 .btn-lg {
     padding: 1rem 2rem;
@@ -170,6 +180,10 @@ ul, ol {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
     min-height: 40px;
+}
+
+.btn:active {
+    transform: scale(0.97);
 }
 
 .btn-whatsapp {
@@ -317,12 +331,13 @@ ul, ol {
     top: 0;
     z-index: 100;
     background: transparent;
-    transition: background var(--transition-base), box-shadow var(--transition-base), color var(--transition-base);
+    transition: background var(--transition-base), box-shadow var(--transition-base), color var(--transition-base), padding-block 0.3s ease;
 }
 .site-header.scrolled {
     background: var(--clr-dark);
     box-shadow: var(--shadow-md);
     color: #fff;
+    padding-block: 0.5rem;
 }
 .site-header.scrolled .main-nav a,
 .site-header.scrolled .logo {
@@ -451,6 +466,23 @@ ul, ol {
     font-weight: 600;
 }
 
+/* Mobile menu items stagger on open */
+.mobile-menu ul li {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.mobile-menu.open ul li {
+    opacity: 1;
+    transform: translateY(0);
+}
+.mobile-menu.open ul li:nth-child(1) { transition-delay: 0.05s; }
+.mobile-menu.open ul li:nth-child(2) { transition-delay: 0.1s; }
+.mobile-menu.open ul li:nth-child(3) { transition-delay: 0.15s; }
+.mobile-menu.open ul li:nth-child(4) { transition-delay: 0.2s; }
+.mobile-menu.open ul li:nth-child(5) { transition-delay: 0.25s; }
+.mobile-menu.open ul li:nth-child(6) { transition-delay: 0.3s; }
+
 /* ===== Hero ===== */
 .hero {
     padding: 4rem 0 6rem;
@@ -458,7 +490,6 @@ ul, ol {
     overflow: hidden;
 }
 
-/* ─── NEW: Dark hero variant for image backgrounds ─── */
 .hero.hero-dark {
     color: #fff;
 }
@@ -466,7 +497,7 @@ ul, ol {
     color: #fff;
 }
 .hero.hero-dark .hero-content h1 .text-gold {
-    color: var(--clr-gold-light);   /* lighter gold for contrast */
+    color: var(--clr-gold-light);
 }
 .hero.hero-dark .hero-cursive {
     color: var(--clr-gold-light);
@@ -489,7 +520,6 @@ ul, ol {
     color: var(--clr-dark);
     border-color: #fff;
 }
-/* ─── end new styles ─── */
 
 .hero-inner {
     display: grid;
@@ -543,6 +573,7 @@ ul, ol {
     aspect-ratio: 4/5;
     animation: float 6s ease-in-out infinite;
     transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+    will-change: transform;
 }
 .hero-image img:hover {
     transform: scale(1.02);
@@ -555,6 +586,31 @@ ul, ol {
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
+}
+
+/* ===== Hero Title Word Reveal ===== */
+.hero-title-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hero-title-word.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== Scroll Progress Bar ===== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    background: var(--clr-gold);
+    z-index: 200;
+    transition: width 0.1s linear;
 }
 
 /* ===== Social Proof Bar ===== */
@@ -787,6 +843,7 @@ ul, ol {
     position: relative;
     box-shadow: var(--shadow-sm);
     transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+    transform-style: preserve-3d;
 }
 .package-card:hover {
     box-shadow: var(--shadow-md);
@@ -962,6 +1019,7 @@ ul, ol {
     overflow: hidden;
     box-shadow: var(--shadow-sm);
     transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+    transform-style: preserve-3d;
 }
 .gallery-grid figure:hover {
     box-shadow: var(--shadow-md);
@@ -1105,16 +1163,20 @@ ul, ol {
     margin-inline: auto;
 }
 .faq details {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
     border-bottom: 1px solid #eee;
     margin-bottom: 0.5rem;
-    transition: background var(--transition-fast);
+    background: transparent;
 }
 .faq details[open] {
+    grid-template-rows: 1fr;
     background: #fafafa;
     border-radius: var(--radius-sm);
 }
-.faq details:not([open]) {
-    background: transparent;
+.faq details > * {
+    overflow: hidden;
 }
 .faq summary {
     font-weight: 600;
@@ -1140,7 +1202,7 @@ ul, ol {
     transform: rotate(180deg);
 }
 .faq p {
-    padding-bottom: 1rem;
+    padding: 0 0 1rem;
     color: var(--clr-text-secondary);
     max-width: 65ch;
 }
@@ -1427,6 +1489,15 @@ ul, ol {
     padding: 0.5rem 1rem;
 }
 
+/* Mobile sticky bar WhatsApp button pulse (mobile only) */
+.mobile-sticky-bar .btn-whatsapp {
+    animation: softPulse 2s infinite;
+}
+@keyframes softPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
 /* ===== Policy Pages ===== */
 .page-section {
     padding: 4rem 0 6rem;
@@ -1501,6 +1572,7 @@ ul, ol {
     flex-direction: column;
     box-shadow: var(--shadow-sm);
     transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+    transform-style: preserve-3d;
 }
 .service-card:hover {
     box-shadow: var(--shadow-md);
@@ -1660,6 +1732,7 @@ ul, ol {
         display: none;
     }
 }
+
 .dropdown.open .dropdown-menu {
   display: block;
 }

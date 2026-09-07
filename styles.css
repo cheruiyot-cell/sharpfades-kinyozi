@@ -4,7 +4,7 @@
     --clr-surface: #FFFFFF;
     --clr-dark: #0D0D0D;
     --clr-dark-surface: #1A1A1A;
-    --clr-gold: #C89B5A;
+    --clr-gold: #B8860B; /* darker gold for better contrast */
     --clr-gold-dark: #8A6A2B;
     --clr-gold-light: #D4AF37;
     --clr-charcoal: #2C2C2C;
@@ -63,7 +63,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch; /* smooth momentum on iOS */
+    -webkit-overflow-scrolling: touch;
 }
 
 img {
@@ -182,8 +182,10 @@ ul, ol {
     min-height: 40px;
 }
 
+/* Removed scale on active to avoid conflict with magnetic effect */
 .btn:active {
-    transform: scale(0.97);
+    /* no transform */
+    filter: brightness(0.95);
 }
 
 .btn-whatsapp {
@@ -365,7 +367,6 @@ ul, ol {
     gap: 0.5rem;
 }
 .logo-icon {
-    font-size: 1.8rem;
     transition: transform var(--transition-fast);
 }
 .logo:hover .logo-icon {
@@ -530,7 +531,7 @@ ul, ol {
 .hero-content h1 {
     font-family: var(--font-heading);
     font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 1.1;
+    line-height: 1.2;
     font-weight: 800;
     margin-bottom: 1rem;
     color: var(--clr-text-primary);
@@ -588,15 +589,16 @@ ul, ol {
     50% { transform: translateY(-10px); }
 }
 
-/* ===== Hero Title Word Reveal ===== */
-.hero-title-word {
+/* Hero title word reveal (for new structure) */
+.hero-title-main,
+.hero-title-sub {
     display: inline-block;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
-.hero-title-word.visible {
+.hero-title-main.visible,
+.hero-title-sub.visible {
     opacity: 1;
     transform: translateY(0);
 }
@@ -807,8 +809,8 @@ ul, ol {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: var(--clr-whatsapp-dark);
     color: #fff;
@@ -1601,7 +1603,7 @@ ul, ol {
 /* ===== Sticky Category Navigation (Services Page) ===== */
 .category-nav {
     position: sticky;
-    top: 70px;
+    top: 64px; /* Adjusted to account for header height */
     z-index: 90;
     background: var(--clr-bg);
     padding: 0.5rem 0;
@@ -1699,8 +1701,8 @@ ul, ol {
         margin-left: auto;
     }
     .btn-book-mini {
-        width: 48px;
-        height: 48px;
+        width: 44px;
+        height: 44px;
         border-radius: var(--radius-sm);
         font-size: 1.1rem;
     }
@@ -1723,7 +1725,12 @@ ul, ol {
     }
 
     .category-nav {
-        top: 60px;
+        top: 56px; /* Adjusted for mobile header */
+    }
+
+    /* Hero background: use a smaller image for mobile */
+    .hero.hero-dark {
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=768&q=60') center/cover no-repeat !important;
     }
 }
 

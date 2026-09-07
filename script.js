@@ -96,6 +96,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ===== Mobile Submenu Toggle (Services page) =====
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const mobileSubmenu = document.getElementById('mobile-submenu-menu');
+    if (mobileToggle && mobileSubmenu) {
+        mobileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+            mobileToggle.setAttribute('aria-expanded', !expanded);
+            mobileSubmenu.classList.toggle('open', !expanded);
+        });
+
+        // Close on outside click
+        document.addEventListener('click', (event) => {
+            if (
+                mobileSubmenu.classList.contains('open') &&
+                !mobileSubmenu.contains(event.target) &&
+                !mobileToggle.contains(event.target)
+            ) {
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                mobileSubmenu.classList.remove('open');
+            }
+        });
+    }
+
+    // ===== Desktop Dropdown Toggle (Services page) =====
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    if (dropdown && dropdownToggle) {
+        dropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            const expanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
+            dropdownToggle.setAttribute('aria-expanded', !expanded);
+            dropdown.classList.toggle('open', !expanded);
+        });
+
+        // Keyboard support
+        dropdownToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                dropdownToggle.click();
+            }
+            if (e.key === 'Escape') {
+                dropdownToggle.setAttribute('aria-expanded', 'false');
+                dropdown.classList.remove('open');
+                dropdownToggle.focus();
+            }
+        });
+
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdownToggle.setAttribute('aria-expanded', 'false');
+                dropdown.classList.remove('open');
+            }
+        });
+    }
+
     // ===== Smooth Scroll with focus management =====
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
     anchorLinks.forEach(link => {
@@ -203,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ===== Staggered Hero Title Reveal =====
-    const heroWords = document.querySelectorAll('.hero-title-word');
+    const heroWords = document.querySelectorAll('.hero-title-main, .hero-title-sub');
     if (heroWords.length) {
         heroWords.forEach((word, index) => {
             setTimeout(() => {
@@ -252,20 +309,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-// Toggle dropdown on click (existing)
-const dropdown = document.querySelector('.dropdown');
-const dropdownToggle = document.querySelector('.dropdown-toggle');
-
-if (dropdownToggle) {
-    dropdownToggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        dropdown.classList.toggle('open');
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target)) {
-            dropdown.classList.remove('open');
-        }
-    });
-}

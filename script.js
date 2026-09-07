@@ -179,12 +179,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const service = document.getElementById('qb-service').value;
             const time = document.getElementById('qb-time').value;
 
-            let message = `Hi SharpFades, I'd like to book a ${service || 'cut'}.`;
+            let message = `Hi SharpFades! I'd like to book a ${service || 'cut'} appointment.`;
             if (name) message += ` My name is ${name}.`;
             if (time) {
                 const formattedTime = new Date(time).toLocaleString('en-KE', { dateStyle: 'medium', timeStyle: 'short' });
-                message += ` Preferred time: ${formattedTime}.`;
+                message += ` My preferred time is: ${formattedTime}.`;
             }
+            message += ` What times do you have available?`;
 
             const whatsappUrl = `https://wa.me/254702555093?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank', 'noopener');

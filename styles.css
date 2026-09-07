@@ -1755,3 +1755,7 @@ ul, ol {
 .dropdown.open .dropdown-menu {
   display: block;
 }
+.dropdown-menu a,
+.mobile-submenu a {
+    color: #fff !important;
+}

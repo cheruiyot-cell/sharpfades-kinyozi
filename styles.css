@@ -1160,53 +1160,65 @@ ul, ol {
     padding: var(--space-2xl) 0;
     background: #fff;
 }
+
 .faq-list {
     max-width: 800px;
     margin-inline: auto;
 }
+
 .faq details {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.3s ease;
     border-bottom: 1px solid #eee;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.25rem;      /* more space between items */
     background: transparent;
 }
-.faq details[open] {
-    grid-template-rows: 1fr;
-    background: #fafafa;
-    border-radius: var(--radius-sm);
-}
-.faq details > * {
-    overflow: hidden;
-}
+
 .faq summary {
     font-weight: 600;
     font-size: 1.1rem;
-    padding: 1rem 0;
+    padding: 1.25rem 0;          /* increased padding */
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style: none;
 }
+
 .faq summary::-webkit-details-marker {
     display: none;
 }
+
 .faq summary::after {
     content: '+';
     font-size: 1.5rem;
     color: var(--clr-gold-dark);
     transition: transform var(--transition-fast);
 }
+
 .faq details[open] summary::after {
     content: '−';
     transform: rotate(180deg);
 }
-.faq p {
-    padding: 0 0 1rem;
+
+/* Animated answer wrapper */
+.faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+}
+
+.faq details[open] .faq-answer {
+    grid-template-rows: 1fr;
+}
+
+.faq-answer > * {
+    overflow: hidden;
+}
+
+.faq-answer p {
+    padding: 0 0 1.25rem;        /* extra bottom padding */
     color: var(--clr-text-secondary);
     max-width: 65ch;
+    margin: 0;
 }
 
 /* ===== Quick Book ===== */

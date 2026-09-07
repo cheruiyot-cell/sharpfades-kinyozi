@@ -24,6 +24,47 @@
     </noscript>
     
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Inline styles for dropdown (to ensure it works without modifying styles.css) -->
+    <style>
+        /* Dropdown menu styles */
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            min-width: 220px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        .dropdown:hover .dropdown-menu,
+        .dropdown:focus-within .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu li { margin: 0; }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #fff;
+            text-decoration: none;
+        }
+        .dropdown-menu a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        .caret { font-size: 0.8rem; margin-left: 4px; }
+
+        /* Mobile submenu indentation */
+        .mobile-submenu a {
+            padding-left: 2rem;
+            font-size: 0.95rem;
+        }
+    </style>
+    
     <script defer src="script.js"></script>
 </head>
 <body>
@@ -40,7 +81,15 @@
                 <ul>
                     <li><a href="/#home">Home</a></li>
                     <li><a href="services.html" aria-current="page" style="color: var(--clr-gold);">Services</a></li>
-                    <li><a href="/#menu">Menu &amp; Pricing</a></li>
+                    <li class="dropdown">
+                        <a href="#menu" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Menu &amp; Pricing <span class="caret">▾</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#haircuts">💈 Haircuts</a></li>
+                            <li><a href="#beard">🧔 Beard &amp; Shave</a></li>
+                            <li><a href="#grooming">✨ Grooming &amp; Add-ons</a></li>
+                            <li><a href="#packages">💎 Packages</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/#gallery">Gallery</a></li>
                     <li><a href="/#about">About</a></li>
                     <li><a href="/#contact">Contact</a></li>
@@ -61,7 +110,19 @@
             <ul>
                 <li><a href="/#home">Home</a></li>
                 <li><a href="services.html" style="color: var(--clr-gold);">Services</a></li>
-                <li><a href="/#menu">Menu &amp; Pricing</a></li>
+                <li><a href="#menu" style="color: var(--clr-gold);">Menu &amp; Pricing</a></li>
+                <li class="mobile-submenu">
+                    <a href="#haircuts">💈 Haircuts</a>
+                </li>
+                <li class="mobile-submenu">
+                    <a href="#beard">🧔 Beard &amp; Shave</a>
+                </li>
+                <li class="mobile-submenu">
+                    <a href="#grooming">✨ Grooming &amp; Add-ons</a>
+                </li>
+                <li class="mobile-submenu">
+                    <a href="#packages">💎 Packages</a>
+                </li>
                 <li><a href="/#gallery">Gallery</a></li>
                 <li><a href="/#about">About</a></li>
                 <li><a href="/#contact">Contact</a></li>
@@ -106,8 +167,8 @@
             </div>
         </nav>
 
-        <!-- Services Detailed Section -->
-        <section class="menu-section" id="services" tabindex="-1">
+        <!-- Services Detailed Section (id changed to "menu") -->
+        <section class="menu-section" id="menu" tabindex="-1">
             <div class="container">
                 <h2 class="section-title">Our Services</h2>
                 <p class="section-sub">Every service is performed with precision and care. We'll always confirm the price before starting.</p>

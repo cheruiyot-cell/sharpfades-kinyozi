@@ -252,7 +252,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const formattedTime = new Date(time).toLocaleString('en-KE', { dateStyle: 'medium', timeStyle: 'short' });
                 message += ` My preferred time is: ${formattedTime}.`;
             }
-            message += ` What times do you have available?`;
+            // Added objection-handling and microcopy
+            message += ` I'm sending this via your website. Please confirm my slot. I understand you'll reply within 15 minutes during business hours.`;
+            message += ` If I don't love it, I know about the 7-day fix guarantee.`;
 
             const whatsappUrl = `https://wa.me/254702555093?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank', 'noopener');

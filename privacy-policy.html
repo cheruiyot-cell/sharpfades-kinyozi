@@ -1,37 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | SharpFades Nairobi</title>
-    <meta name="description" content="Read our privacy policy to understand how SharpFades Nairobi collects, uses, and protects your personal information.">
+    <meta name="description" content="The short version: we collect only what we need to book your appointment, we never sell your data, and you can ask us to delete it anytime.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.sharpsfades.co.ke/privacy-policy.html">
-    
-    <!-- Open Graph -->
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230D0D0D'/%3E%3Cg fill='none' stroke='%23B8860B' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M7 16h18'/%3E%3Cpath d='M7 16l6-6'/%3E%3Cpath d='M7 16l6 6'/%3E%3C/g%3E%3Ccircle cx='7' cy='16' r='2' fill='%23B8860B'/%3E%3Ccircle cx='25' cy='16' r='2' fill='%23B8860B'/%3E%3C/svg%3E">
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.sharpsfades.co.ke/privacy-policy.html">
     <meta property="og:title" content="Privacy Policy | SharpFades Nairobi">
-    <meta property="og:description" content="Learn how we handle your personal data.">
-    
-    <!-- Fonts -->
+    <meta property="og:description" content="We collect only what we need. We never sell your data. Delete it anytime.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&family=Great+Vibes&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&family=Great+Vibes&display=swap" media="print" onload="this.media='all'">
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&family=Great+Vibes&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700;800&family=Great+Vibes&display=swap">
     </noscript>
-    
+
     <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <header class="site-header scrolled" id="site-header">
         <div class="container header-inner">
             <a href="/" class="logo" aria-label="SharpFades Nairobi Home">
-                <span class="logo-icon" aria-hidden="true">✂</span>
+                <svg class="logo-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M6 12L18 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6 12L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M6 12L12 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="6" cy="12" r="1.5" fill="currentColor"/>
+                    <circle cx="18" cy="12" r="1.5" fill="currentColor"/>
+                </svg>
                 <span>SharpFades<span class="logo-accent">.</span></span>
             </a>
             <nav class="main-nav" aria-label="Main navigation">
@@ -45,16 +54,16 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="https://wa.me/254702555093?text=Hi%20SharpFades%2C%20I%27d%20like%20to%20book%20a%20cut." class="btn btn-whatsapp" target="_blank" rel="noopener">
+                <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20Could%20you%20let%20me%20know%20your%20availability?" class="btn btn-whatsapp" target="_blank" rel="noopener" aria-label="Book on WhatsApp">
                     <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-whatsapp"></use></svg>
                     <span>Book on WhatsApp</span>
                 </a>
-                <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation">
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation">
                     <span class="hamburger"></span>
                 </button>
             </div>
         </div>
-        <div class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
             <ul>
                 <li><a href="/#home">Home</a></li>
                 <li><a href="services.html">Services</a></li>
@@ -63,80 +72,125 @@
                 <li><a href="/#about">About</a></li>
                 <li><a href="/#contact">Contact</a></li>
             </ul>
-            <a href="https://wa.me/254702555093?text=Hi%20SharpFades%2C%20I%27d%20like%20to%20book%20a%20cut." class="btn btn-whatsapp btn-block" target="_blank" rel="noopener">Book on WhatsApp</a>
+            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment." class="btn btn-whatsapp btn-block" target="_blank" rel="noopener">Book on WhatsApp</a>
             <a href="tel:+254702555093" class="btn btn-outline btn-block">Call: 0702 555 093</a>
-        </div>
+        </nav>
     </header>
 
     <main id="main-content">
-        <section class="page-section" style="padding: 4rem 0 6rem;">
+        <section class="page-section">
             <div class="container">
-                <h1 class="page-title">Privacy Policy</h1>
-                <p class="last-updated">Last updated: January 2026</p>
+
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="/">Home</a>
+                    <span aria-hidden="true">/</span>
+                    <span aria-current="page">Privacy Policy</span>
+                </nav>
+
+                <h1 class="page-title">Privacy Policy: Plain English, No Fine Print</h1>
+                <p class="last-updated">Last updated: September 2026</p>
+
+                <p class="policy-trust-line">
+                    Trusted by 500+ Nairobi clients &middot; 4.9★ on Google &middot; We never sell your data
+                </p>
+
                 <div class="policy-content">
-                    <h2>1. Introduction</h2>
-                    <p>SharpFades Nairobi ("we", "our", "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <a href="https://www.sharpsfades.co.ke">sharpsfades.co.ke</a>, or use our services. Please read this policy carefully.</p>
 
-                    <h2>2. Information We Collect</h2>
-                    <p>We may collect the following types of information when you interact with us:</p>
+                    <p>Your privacy matters. This page explains exactly what we collect, why we collect it, and how you stay in control. No legalese, no tricks.</p>
+
+                    <aside class="policy-callout">
+                        <h2>The short version</h2>
+                        <ul>
+                            <li>We collect <strong>only what we need</strong> to book your appointment and give you a great cut.</li>
+                            <li>We <strong>never sell or rent</strong> your personal information. Ever.</li>
+                            <li>We <strong>never store card details</strong> — payments happen in person via M-Pesa, cash, or card.</li>
+                            <li>You can ask us to <strong>delete your data anytime</strong>. One WhatsApp message is enough.</li>
+                            <li>We only message you about your booking — unless you've asked us for offers.</li>
+                        </ul>
+                    </aside>
+
+                    <h2>1. Who We Are</h2>
+                    <p>SharpFades Nairobi ("we", "our", "us") operates <a href="/">sharpsfades.co.ke</a> and provides barbering services from Kilimani Mall, Tigoni Road, Nairobi. If you have any privacy question, you can reach a real person — details at the bottom of this page.</p>
+
+                    <h2>2. What We Collect</h2>
+                    <p>Only what's needed to serve you well:</p>
                     <ul>
-                        <li><strong>Personal Identification Information:</strong> Name, phone number, email address (if provided), and any other details you share when booking via WhatsApp or phone.</li>
-                        <li><strong>Booking Information:</strong> Service preferences, appointment times, and any reference photos you send.</li>
-                        <li><strong>Payment Information:</strong> We do not collect or store payment details on our website. Payments are processed via M-Pesa, cash, or card at the time of service.</li>
-                        <li><strong>Technical Data:</strong> IP address, browser type, device information, and cookies (if you browse our site).</li>
+                        <li><strong>Details you give us:</strong> your name, phone number, and anything else you share when booking on WhatsApp or by phone.</li>
+                        <li><strong>Booking details:</strong> your preferred service, appointment time, and any reference photos you send us.</li>
+                        <li><strong>Payment:</strong> we do <em>not</em> collect or store payment details on this website. Payments are handled in person via M-Pesa, cash, or card.</li>
+                        <li><strong>Technical data:</strong> basic browser and device information, plus cookies, if you browse the site.</li>
                     </ul>
 
-                    <h2>3. How We Use Your Information</h2>
-                    <p>We use the information collected to:</p>
+                    <h2>3. How We Use It</h2>
                     <ul>
-                        <li>Manage your booking requests and confirm appointments.</li>
-                        <li>Communicate with you regarding your service, changes, or follow-ups.</li>
-                        <li>Improve our website and customer experience.</li>
-                        <li>Send you promotional offers or updates (only with your consent).</li>
+                        <li>To confirm and manage your booking.</li>
+                        <li>To message you about your appointment — changes, reminders, follow-ups.</li>
+                        <li>To improve our website and the service you get in the chair.</li>
+                        <li>To send you offers — <strong>only if you've opted in</strong>. You can opt out any time.</li>
                     </ul>
 
-                    <h2>4. Sharing Your Information</h2>
-                    <p>We do not sell or rent your personal information to third parties. We may share your data with:</p>
+                    <h2>4. What We Never Do</h2>
                     <ul>
-                        <li>Service providers who assist us in operating our business (e.g., payment processors).</li>
-                        <li>Legal authorities if required by law.</li>
+                        <li>We never sell or rent your personal information.</li>
+                        <li>We never spam you with marketing you didn't ask for.</li>
+                        <li>We never store your card or M-Pesa credentials.</li>
+                        <li>We never share your reference photos publicly without asking.</li>
                     </ul>
 
-                    <h2>5. Data Security</h2>
-                    <p>We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction.</p>
-
-                    <h2>6. Cookies</h2>
-                    <p>Our website may use cookies to enhance your browsing experience. You can disable cookies in your browser settings; however, some features may not function properly.</p>
-
-                    <h2>7. Your Rights</h2>
-                    <p>You have the right to:</p>
+                    <h2>5. Who We Share With</h2>
+                    <p>Only where strictly necessary:</p>
                     <ul>
-                        <li>Access the personal data we hold about you.</li>
-                        <li>Request correction of inaccurate information.</li>
-                        <li>Request deletion of your data.</li>
-                        <li>Opt out of marketing communications at any time.</li>
+                        <li>Trusted service providers who help us run the business (for example, payment processing or hosting).</li>
+                        <li>Legal authorities, if the law requires it.</li>
                     </ul>
-                    <p>To exercise any of these rights, contact us via <a href="https://wa.me/254702555093">WhatsApp</a> or <a href="tel:+254702555093">0702 555 093</a>.</p>
+                    <p>That's the complete list.</p>
 
-                    <h2>8. Third-Party Links</h2>
-                    <p>Our website may contain links to third-party websites (e.g., Instagram, Facebook). We are not responsible for their privacy practices.</p>
+                    <h2>6. How We Protect Your Data</h2>
+                    <p>We apply appropriate technical and organisational safeguards to protect your information against unauthorised access, alteration, disclosure, or loss. Access is limited to the people who need it to serve you.</p>
 
-                    <h2>9. Children's Privacy</h2>
-                    <p>Our services are not intended for individuals under the age of 13. We do not knowingly collect data from children.</p>
+                    <h2>7. Cookies</h2>
+                    <p>Our website may use cookies to make browsing smoother and to understand which pages are useful. You can turn cookies off in your browser settings — though a few features may stop working properly.</p>
 
-                    <h2>10. Changes to This Policy</h2>
-                    <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with a revised date.</p>
+                    <h2>8. Your Rights</h2>
+                    <p>You're in control. You can:</p>
+                    <ul>
+                        <li>Ask to see the personal data we hold about you.</li>
+                        <li>Ask us to correct anything inaccurate.</li>
+                        <li>Ask us to delete your data.</li>
+                        <li>Opt out of marketing at any time.</li>
+                    </ul>
+                    <p>To do any of these, message us on <a href="https://wa.me/254702555093" target="_blank" rel="noopener">WhatsApp</a> or call <a href="tel:+254702555093">0702 555 093</a>. We'll action it promptly.</p>
 
-                    <h2>11. Contact Us</h2>
-                    <p>If you have questions about this Privacy Policy, please reach out to us:</p>
+                    <h2>9. Third-Party Links</h2>
+                    <p>Our site links to platforms like Instagram and Facebook. Their privacy practices are their own — we're not responsible for how they handle your data.</p>
+
+                    <h2>10. Children's Privacy</h2>
+                    <p>Our services aren't directed at children under 13, and we don't knowingly collect their data. Kids' cuts are booked by a parent or guardian.</p>
+
+                    <h2>11. Changes to This Policy</h2>
+                    <p>If we update this policy, we'll post the new version here with a revised date. No silent changes.</p>
+
+                    <h2>12. Contact Us</h2>
                     <p>
                         SharpFades Nairobi<br>
                         Kilimani Mall, Tigoni Road<br>
                         Nairobi, Kenya<br>
                         Phone: <a href="tel:+254702555093">0702 555 093</a><br>
-                        WhatsApp: <a href="https://wa.me/254702555093">Chat with us</a>
+                        WhatsApp: <a href="https://wa.me/254702555093" target="_blank" rel="noopener">Chat with us</a>
                     </p>
                 </div>
+
+                <aside class="policy-cta">
+                    <h2>Questions about your data?</h2>
+                    <p>Message us on WhatsApp. A real person will answer — usually within 15 minutes during business hours.</p>
+                    <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20have%20a%20question%20about%20your%20privacy%20policy."
+                       class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener">
+                        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-whatsapp"></use></svg>
+                        <span>Ask Us on WhatsApp</span>
+                    </a>
+                    <p class="cta-microcopy">Or just book a cut — we'll take care of the rest.</p>
+                </aside>
+
             </div>
         </section>
     </main>
@@ -162,7 +216,7 @@
             <div class="footer-col">
                 <h4>Book Now</h4>
                 <ul>
-                    <li><a href="https://wa.me/254702555093?text=Hi%20SharpFades%2C%20I%27d%20like%20to%20book%20a%20cut." target="_blank" rel="noopener">WhatsApp: 0702 555 093</a></li>
+                    <li><a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener">WhatsApp: 0702 555 093</a></li>
                     <li><a href="tel:+254702555093">Call: 0702 555 093</a></li>
                 </ul>
                 <div class="social-links">
@@ -185,13 +239,23 @@
         </div>
     </footer>
 
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <div class="mobile-sticky-bar" id="mobile-sticky-bar">
+        <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20Could%20you%20let%20me%20know%20your%20availability?" class="btn btn-whatsapp btn-block" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+            <span>Book on WhatsApp</span>
+        </a>
+    </div>
+
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">
+        <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-up"></use></svg>
+    </button>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;" aria-hidden="true">
         <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
         <symbol id="icon-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></symbol>
         <symbol id="icon-instagram" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></symbol>
         <symbol id="icon-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+        <symbol id="icon-arrow-up" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4l-8 8h5v8h6v-8h5l-8-8z"/></symbol>
     </svg>
-
-    <script src="script.js"></script>
 </body>
 </html>

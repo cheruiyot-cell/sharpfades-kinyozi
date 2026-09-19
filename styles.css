@@ -161,14 +161,10 @@ ul, ol { list-style: none; }
     }
 }
 
-/* ===== No-JS Fallbacks ===== */
-.no-js .section-title,
-.no-js .animate-on-scroll,
-.no-js .hero-title-main,
-.no-js .hero-title-sub {
-    opacity: 1 !important;
-    transform: none !important;
-}
+/* ===== No-JS Fallback ===== */
+/* Base visibility of animated content is on by default. Only `.js` hides
+   it — so if script.js fails to load, nothing disappears. The mobile menu
+   remains accessible without JS on small screens. */
 .no-js .mobile-menu { display: none; }
 @media (max-width: 768px) {
     .no-js .mobile-menu { display: block; }
@@ -275,14 +271,18 @@ ul, ol { list-style: none; }
     font-family: var(--font-heading);
     font-size: clamp(2rem, 4vw, 2.5rem);
     font-weight: 800;
+    letter-spacing: -0.02em;
     margin-bottom: var(--space-md);
     line-height: 1.2;
     color: var(--clr-text-primary);
-    opacity: 0;
-    transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.section-title.visible { opacity: 1; transform: translateY(0); }
+/* Hidden only when JS is confirmed active, so a JS failure never leaves
+   headings permanently invisible. */
+.js .section-title:not(.visible) {
+    opacity: 0;
+    transform: translateY(12px);
+}
 
 .section-sub {
     font-size: 1.1rem;
@@ -294,12 +294,13 @@ ul, ol { list-style: none; }
 .text-gold { color: var(--clr-gold-dark); }
 
 .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(20px);
     transition: opacity var(--transition-slow), transform var(--transition-slow);
     will-change: opacity, transform;
 }
-.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+.js .animate-on-scroll:not(.visible) {
+    opacity: 0;
+    transform: translateY(12px);
+}
 
 /* Balanced line breaking on display headings */
 .page-title,
@@ -467,7 +468,13 @@ ul, ol { list-style: none; }
     background: linear-gradient(135deg, #fdfbf7 0%, #f0ebe3 100%);
     overflow: hidden;
 }
-.hero.hero-dark { color: #fff; }
+.hero.hero-dark {
+    color: #fff;
+    /* Solid fallback guarantees white hero text stays legible even if the
+       inline background image fails to load or is blocked. */
+    background-color: var(--clr-dark);
+    background-image: linear-gradient(135deg, #1A1A1A 0%, #0D0D0D 100%);
+}
 .hero.hero-dark .hero-content h1 { color: #fff; }
 .hero.hero-dark .hero-content h1 .text-gold { color: var(--clr-gold-light); }
 .hero.hero-dark .hero-cursive { color: var(--clr-gold-light); }
@@ -493,8 +500,9 @@ ul, ol { list-style: none; }
 .hero-content h1 {
     font-family: var(--font-heading);
     font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 1.2;
+    line-height: 1.15;
     font-weight: 800;
+    letter-spacing: -0.02em;
     margin-bottom: 1rem;
     color: var(--clr-text-primary);
 }
@@ -502,7 +510,7 @@ ul, ol { list-style: none; }
     font-family: var(--font-accent);
     font-size: 1.5rem;
     color: var(--clr-gold-dark);
-    margin-top: -0.5rem;
+    margin-top: 0.25rem;
     margin-bottom: 1rem;
     letter-spacing: 1px;
 }
@@ -537,15 +545,13 @@ ul, ol { list-style: none; }
 
 .hero-title-main,
 .hero-title-sub {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(30px);
+    display: block;
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.hero-title-main.visible,
-.hero-title-sub.visible {
-    opacity: 1;
-    transform: translateY(0);
+.js .hero-title-main:not(.visible),
+.js .hero-title-sub:not(.visible) {
+    opacity: 0;
+    transform: translateY(12px);
 }
 
 @keyframes fadeInUp {
@@ -662,16 +668,34 @@ ul, ol { list-style: none; }
 .menu-section { padding: var(--space-2xl) 0; background: #fff; }
 .menu-category { margin-bottom: 2rem; }
 .category-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
     font-family: var(--font-heading);
     font-size: 1.5rem;
+    letter-spacing: -0.01em;
     color: var(--clr-gold-dark);
     border-bottom: 2px solid #eee;
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
 }
+.category-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    color: var(--clr-gold-dark);
+}
 
 .packages { margin-top: 3rem; }
-.packages-title { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1.5rem; }
+.packages-title {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+}
 .package-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -933,6 +957,8 @@ ul, ol { list-style: none; }
 .final-cta h2 {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
     margin-bottom: 1rem;
 }
 .final-cta p { color: var(--clr-text-light-secondary); margin-bottom: 2rem; }
@@ -1084,6 +1110,7 @@ ul, ol { list-style: none; }
     font-family: var(--font-heading);
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
+    letter-spacing: -0.02em;
     margin-bottom: 0.5rem;
     color: var(--clr-text-primary);
 }
@@ -1165,7 +1192,9 @@ ul, ol { list-style: none; }
 .category-nav::-webkit-scrollbar { display: none; }
 .category-nav .container { display: flex; gap: 0.5rem; }
 .category-chip {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     padding: 0.4rem 1rem;
     border-radius: var(--radius-full);
     background: #fff;
@@ -1174,7 +1203,9 @@ ul, ol { list-style: none; }
     font-size: 0.9rem;
     transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
 }
+.category-chip .icon { width: 1rem; height: 1rem; }
 .category-chip:hover { background: var(--clr-gold); color: #fff; border-color: var(--clr-gold); }
+.category-chip:hover .icon { color: #fff; }
 .category-chip:focus-visible { outline: 2px solid var(--clr-gold); outline-offset: 2px; }
 
 /* ===== Dropdown ===== */
@@ -1208,11 +1239,19 @@ ul, ol { list-style: none; }
 .dropdown.open .dropdown-menu { display: block; }
 .dropdown-menu li { margin: 0; }
 .dropdown-menu a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
     padding: 0.5rem 1rem;
     color: #fff !important;
     text-decoration: none;
     background: transparent;
+}
+.dropdown-menu a .icon {
+    width: 1rem;
+    height: 1rem;
+    color: var(--clr-gold-light);
+    flex-shrink: 0;
 }
 .dropdown-menu a:hover,
 .dropdown-menu a:focus-visible {
@@ -1231,10 +1270,18 @@ ul, ol { list-style: none; }
 }
 .mobile-submenu.open { display: block; }
 .mobile-submenu a {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
     font-size: 0.95rem;
     padding: 0.4rem 0;
-    display: block;
     color: #fff !important;
+}
+.mobile-submenu a .icon {
+    width: 1rem;
+    height: 1rem;
+    color: var(--clr-gold-light);
+    flex-shrink: 0;
 }
 .mobile-toggle {
     background: none;
@@ -1348,13 +1395,17 @@ ul, ol { list-style: none; }
 
 /* ===== Hero headline hierarchy ===== */
 .hero-title-sub {
-    display: inline-block;
+    display: block;
     font-size: clamp(1.1rem, 2.2vw, 1.6rem);
     font-weight: 700;
     color: var(--clr-gold-light);
     letter-spacing: 0.01em;
     line-height: 1.4;
-    margin-top: 0.5em;
+    margin-top: 0.75rem;
+}
+/* Gold-light has poor contrast on light backgrounds — use the darker gold. */
+.hero:not(.hero-dark) .hero-title-sub {
+    color: var(--clr-gold-dark);
 }
 
 /* ===== Inline text link in dark final CTA ===== */
@@ -1458,7 +1509,6 @@ ul, ol { list-style: none; }
 }
 .gallery-item:hover .gallery-thumb img { transform: scale(1.05); }
 
-/* Caption fully overrides legacy .gallery-grid figcaption */
 .gallery-caption {
     padding: 1rem 1.1rem 1.15rem;
     display: flex;
@@ -1972,7 +2022,7 @@ ul, ol { list-style: none; }
     .site-footer { padding-bottom: calc(var(--mobile-sticky-h) + env(safe-area-inset-bottom, 0)); }
 
     .hero.hero-dark {
-        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=768&q=60') center/cover no-repeat !important;
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=768&q=60') center/cover no-repeat #0D0D0D !important;
     }
 
     .policy-callout { padding: 1.5rem 1.25rem 1.25rem; }

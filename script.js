@@ -1,3 +1,7 @@
+// Signal that JS is alive so the inline <head> safety-net does not strip
+// the `.js` class after its 1500 ms timeout.
+window.sfReady = true;
+
 document.addEventListener('DOMContentLoaded', () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const scrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';

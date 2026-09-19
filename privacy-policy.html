@@ -25,7 +25,16 @@
 
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
-    <script>document.documentElement.classList.remove('no-js');</script>
+    <script>
+        document.documentElement.classList.add('js');
+        document.documentElement.classList.remove('no-js');
+        setTimeout(function () {
+            if (!window.sfReady) {
+                document.documentElement.classList.remove('js');
+                document.documentElement.classList.add('no-js');
+            }
+        }, 1500);
+    </script>
 </head>
 <body>
     <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>

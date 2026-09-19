@@ -2055,4 +2055,11 @@ ul, ol { list-style: none; }
 
 @media (min-width: 769px) {
     .mobile-sticky-bar { display: none; }
+}@media (max-width: 768px) {
+    .header-actions .btn-whatsapp {
+        display: none;
+    }
+}
+.site-header--on-dark {
+    background: var(--clr-dark);
 }

@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery | SharpFades Nairobi — Real Cuts, Real Clients</title>
-    <meta name="description" content="Browse our portfolio of fades, beard sculpts, and grooming work in Nairobi. Find a look you love, then book it in 30 seconds on WhatsApp.">
+    <meta name="description" content="Browse the portfolio of fades, beard sculpts, and grooming work in Nairobi. Find a look you love, then book it on WhatsApp in 30 seconds.">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0D0D0D">
     <link rel="canonical" href="https://www.sharpsfades.co.ke/gallery.html">
 
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230D0D0D'/%3E%3Cg fill='none' stroke='%23B8860B' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M7 16h18'/%3E%3Cpath d='M7 16l6-6'/%3E%3Cpath d='M7 16l6 6'/%3E%3C/g%3E%3Ccircle cx='7' cy='16' r='2' fill='%23B8860B'/%3E%3Ccircle cx='25' cy='16' r='2' fill='%23B8860B'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230D0D0D'/%3E%3Cg fill='none' stroke='%23B8860B' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M7 16h18'/%3E%3Cpath d='M7 16l6-6'/%3E%3Cpath d='M7 16l6 6'/%3E%3C/g%3E%3Ccircle cx='7' cy='16' r='2' fill='%23B8860B'/%3E%3Ccircle cx='25' cy='16' r='2' fill='%23B8860B'/%3E%3C/svg%3E">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.sharpsfades.co.ke/gallery.html">
     <meta property="og:title" content="Gallery | SharpFades Nairobi">
-    <meta property="og:description" content="Real cuts. Real clients. No filters. Find a look you love—book it in 30 seconds.">
+    <meta property="og:description" content="Real cuts. Real clients. No filters. Find a look you love—book on WhatsApp.">
     <meta property="og:image" content="https://i.ibb.co/GfTDm7bp/Picsart-26-09-07-11-02-48-453.jpg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +45,7 @@
 
     <header class="site-header" id="site-header">
         <div class="container header-inner">
-            <a href="/" class="logo" aria-label="SharpFades Nairobi Home">
+            <a href="index.html" class="logo" aria-label="SharpFades Nairobi Home">
                 <svg class="logo-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M6 12L18 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     <path d="M6 12L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -55,18 +57,20 @@
             </a>
             <nav class="main-nav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="/#home">Home</a></li>
+                    <li><a href="index.html#home">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="gallery.html" aria-current="page" class="text-gold">Gallery</a></li>
                     <li><a href="about.html">Meet Harrison</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="/#contact">Contact</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F" class="nav-book" data-track-location="nav" data-service="Book" target="_blank" rel="noopener">
+                        <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                        Book Now
+                    </a></li>
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20Could%20you%20let%20me%20know%20your%20availability%3F"
-                   class="btn btn-whatsapp" target="_blank" rel="noopener"
-                   data-track-location="header" data-service="General" aria-label="Book on WhatsApp">
+                <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F" class="btn btn-whatsapp" data-track-location="header" data-service="Book" aria-label="Book on WhatsApp" target="_blank" rel="noopener">
                     <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-whatsapp"></use></svg>
                     <span>Book on WhatsApp</span>
                 </a>
@@ -77,17 +81,18 @@
         </div>
         <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
             <ul>
-                <li><a href="/#home">Home</a></li>
+                <li><a href="index.html#home">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="gallery.html" class="text-gold">Gallery</a></li>
                 <li><a href="about.html">Meet Harrison</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="/#contact">Contact</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
-            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment."
-               class="btn btn-whatsapp btn-block" target="_blank" rel="noopener"
-               data-track-location="mobile-menu" data-service="General">Book on WhatsApp</a>
-            <a href="tel:+254702555093" class="btn btn-outline btn-block" data-track-location="mobile-menu">Call: 0702 555 093</a>
+            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F" class="btn btn-whatsapp btn-block" data-track-location="mobile-menu" data-service="Book" target="_blank" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                Book on WhatsApp
+            </a>
+            <a href="index.html#contact" class="btn btn-outline btn-block" data-track-location="mobile-menu" data-cta-type="contact">Contact &amp; Directions</a>
         </nav>
     </header>
 
@@ -95,12 +100,12 @@
         <section class="page-hero">
             <div class="container">
                 <nav class="breadcrumb" aria-label="Breadcrumb">
-                    <a href="/">Home</a>
+                    <a href="index.html">Home</a>
                     <span aria-hidden="true">/</span>
                     <span aria-current="page">Gallery</span>
                 </nav>
                 <h1 class="page-title">Real Cuts. Real Clients. No Filters.</h1>
-                <p class="page-subtitle">Browse the work. Find a look you love. Then book it in 30 seconds on WhatsApp—or we'll fix it free within 7 days.</p>
+                <p class="page-subtitle">Browse the work. Find a look you love. Then book it on WhatsApp in 30 seconds—or I'll fix it free within 7 days.</p>
                 <p class="policy-trust-line">500+ clients &middot; 4.9★ on Google &middot; 7-Day Fix Guarantee on every cut</p>
             </div>
         </section>
@@ -108,11 +113,11 @@
         <section class="gallery-section">
             <div class="container">
                 <div class="gallery-filters" role="tablist" aria-label="Filter gallery by category">
-                    <button class="filter-chip active" type="button" data-filter="all" role="tab" aria-selected="true">All Work</button>
-                    <button class="filter-chip" type="button" data-filter="fade" role="tab" aria-selected="false">Fades</button>
-                    <button class="filter-chip" type="button" data-filter="beard" role="tab" aria-selected="false">Beards</button>
-                    <button class="filter-chip" type="button" data-filter="grooming" role="tab" aria-selected="false">Grooming</button>
-                    <button class="filter-chip" type="button" data-filter="shop" role="tab" aria-selected="false">The Shop</button>
+                    <button class="filter-chip active" type="button" data-filter="all" role="tab" aria-selected="true" aria-controls="gallery-grid">All Work</button>
+                    <button class="filter-chip" type="button" data-filter="fade" role="tab" aria-selected="false" aria-controls="gallery-grid">Fades</button>
+                    <button class="filter-chip" type="button" data-filter="beard" role="tab" aria-selected="false" aria-controls="gallery-grid">Beards</button>
+                    <button class="filter-chip" type="button" data-filter="grooming" role="tab" aria-selected="false" aria-controls="gallery-grid">Grooming</button>
+                    <button class="filter-chip" type="button" data-filter="shop" role="tab" aria-selected="false" aria-controls="gallery-grid">The Shop</button>
                 </div>
 
                 <div class="gallery-grid gallery-grid--portfolio" id="gallery-grid" role="tabpanel" aria-live="polite">
@@ -125,10 +130,9 @@
                                 <span class="gallery-title">Precision Skin Fade</span>
                                 <span class="gallery-price">KES 500</span>
                             </div>
-                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20the%20Precision%20Skin%20Fade%20in%20your%20gallery.%20I'd%20like%20to%20book%20that%20look%20(KES%20500).%20What%20times%20do%20you%20have%20available%3F"
-                               class="book-look-btn" target="_blank" rel="noopener"
-                               data-track-location="gallery-item" data-service="Precision Skin Fade">
-                                Book This Look
+                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20the%20Precision%20Skin%20Fade%20in%20your%20gallery.%20I'd%20like%20to%20book%20that%20look%20(KES%20500).%20What%20times%20do%20you%20have%20available%3F" class="book-look-btn" data-track-location="gallery-item" data-service="Precision Skin Fade" target="_blank" rel="noopener">
+                                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                                Book on WhatsApp
                             </a>
                         </figcaption>
                     </figure>
@@ -142,10 +146,9 @@
                                 <span class="gallery-title">Beard Sculpt &amp; Line-up</span>
                                 <span class="gallery-price">KES 300</span>
                             </div>
-                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20the%20Beard%20Sculpt%20%26%20Line-up%20in%20your%20gallery.%20I'd%20like%20to%20book%20that%20look%20(KES%20300).%20What%20times%20do%20you%20have%20available%3F"
-                               class="book-look-btn" target="_blank" rel="noopener"
-                               data-track-location="gallery-item" data-service="Beard Sculpt and Line-up">
-                                Book This Look
+                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20the%20Beard%20Sculpt%20%26%20Line-up%20in%20your%20gallery.%20I'd%20like%20to%20book%20that%20look%20(KES%20300).%20What%20times%20do%20you%20have%20available%3F" class="book-look-btn" data-track-location="gallery-item" data-service="Beard Sculpt and Line-up" target="_blank" rel="noopener">
+                                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                                Book on WhatsApp
                             </a>
                         </figcaption>
                     </figure>
@@ -159,10 +162,9 @@
                                 <span class="gallery-title">Hot Towel Shave</span>
                                 <span class="gallery-price">KES 400</span>
                             </div>
-                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20the%20Hot%20Towel%20Shave%20in%20your%20gallery.%20I'd%20like%20to%20book%20that%20service%20(KES%20400).%20What%20times%20do%20you%20have%20available%3F"
-                               class="book-look-btn" target="_blank" rel="noopener"
-                               data-track-location="gallery-item" data-service="Hot Towel Shave">
-                                Book This Look
+                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20the%20Hot%20Towel%20Shave%20in%20your%20gallery.%20I'd%20like%20to%20book%20that%20service%20(KES%20400).%20What%20times%20do%20you%20have%20available%3F" class="book-look-btn" data-track-location="gallery-item" data-service="Hot Towel Shave" target="_blank" rel="noopener">
+                                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                                Book on WhatsApp
                             </a>
                         </figcaption>
                     </figure>
@@ -176,10 +178,9 @@
                                 <span class="gallery-title">Premium Fade Result</span>
                                 <span class="gallery-price">KES 500</span>
                             </div>
-                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20the%20Premium%20Fade%20in%20your%20gallery.%20I'd%20like%20to%20book%20that%20look%20(KES%20500).%20What%20times%20do%20you%20have%20available%3F"
-                               class="book-look-btn" target="_blank" rel="noopener"
-                               data-track-location="gallery-item" data-service="Premium Fade">
-                                Book This Look
+                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20the%20Premium%20Fade%20in%20your%20gallery.%20I'd%20like%20to%20book%20that%20look%20(KES%20500).%20What%20times%20do%20you%20have%20available%3F" class="book-look-btn" data-track-location="gallery-item" data-service="Premium Fade" target="_blank" rel="noopener">
+                                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                                Book on WhatsApp
                             </a>
                         </figcaption>
                     </figure>
@@ -193,10 +194,9 @@
                                 <span class="gallery-title">Hot Towel After-shave</span>
                                 <span class="gallery-price">Included with shave</span>
                             </div>
-                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20the%20Hot%20Towel%20After-shave%20in%20your%20gallery.%20I'd%20like%20to%20book%20a%20shave%20with%20that%20finish.%20What%20times%20do%20you%20have%20available%3F"
-                               class="book-look-btn" target="_blank" rel="noopener"
-                               data-track-location="gallery-item" data-service="Hot Towel Shave">
-                                Book This Look
+                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20the%20Hot%20Towel%20After-shave%20in%20your%20gallery.%20I'd%20like%20to%20book%20a%20shave%20with%20that%20finish.%20What%20times%20do%20you%20have%20available%3F" class="book-look-btn" data-track-location="gallery-item" data-service="Hot Towel Shave" target="_blank" rel="noopener">
+                                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                                Book on WhatsApp
                             </a>
                         </figcaption>
                     </figure>
@@ -210,10 +210,9 @@
                                 <span class="gallery-title">Fade in Progress</span>
                                 <span class="gallery-price">From KES 200</span>
                             </div>
-                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20the%20fade%20work%20in%20your%20gallery.%20I'd%20like%20to%20book%20a%20fade.%20What%20times%20do%20you%20have%20available%3F"
-                               class="book-look-btn" target="_blank" rel="noopener"
-                               data-track-location="gallery-item" data-service="Fade">
-                                Book This Look
+                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20the%20fade%20work%20in%20your%20gallery.%20I'd%20like%20to%20book%20a%20fade.%20What%20times%20do%20you%20have%20available%3F" class="book-look-btn" data-track-location="gallery-item" data-service="Fade" target="_blank" rel="noopener">
+                                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                                Book on WhatsApp
                             </a>
                         </figcaption>
                     </figure>
@@ -227,10 +226,9 @@
                                 <span class="gallery-title">The Shop</span>
                                 <span class="gallery-price">Kilimani Mall</span>
                             </div>
-                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20a%20visit.%20What%20times%20do%20you%20have%20available%3F"
-                               class="book-look-btn" target="_blank" rel="noopener"
-                               data-track-location="gallery-item" data-service="General">
-                                Book a Visit
+                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20a%20visit.%20What%20times%20do%20you%20have%20available%3F" class="book-look-btn" data-track-location="gallery-item" data-service="General" target="_blank" rel="noopener">
+                                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                                Book on WhatsApp
                             </a>
                         </figcaption>
                     </figure>
@@ -244,10 +242,9 @@
                                 <span class="gallery-title">Professional Tools</span>
                                 <span class="gallery-price">Sanitized every cut</span>
                             </div>
-                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20noticed%20your%20professional%20tools%20in%20the%20gallery.%20I'd%20like%20to%20book.%20What%20times%20do%20you%20have%20available%3F"
-                               class="book-look-btn" target="_blank" rel="noopener"
-                               data-track-location="gallery-item" data-service="General">
-                                Book a Visit
+                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20a%20visit.%20What%20times%20do%20you%20have%20available%3F" class="book-look-btn" data-track-location="gallery-item" data-service="General" target="_blank" rel="noopener">
+                                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                                Book on WhatsApp
                             </a>
                         </figcaption>
                     </figure>
@@ -261,33 +258,30 @@
                                 <span class="gallery-title">Beard Trim &amp; Shape</span>
                                 <span class="gallery-price">KES 200</span>
                             </div>
-                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20the%20Beard%20Trim%20in%20your%20gallery.%20I'd%20like%20to%20book%20(KES%20200).%20What%20times%20do%20you%20have%20available%3F"
-                               class="book-look-btn" target="_blank" rel="noopener"
-                               data-track-location="gallery-item" data-service="Beard Trim">
-                                Book This Look
+                            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20the%20Beard%20Trim%20in%20your%20gallery.%20I'd%20like%20to%20book%20(KES%20200).%20What%20times%20do%20you%20have%20available%3F" class="book-look-btn" data-track-location="gallery-item" data-service="Beard Trim" target="_blank" rel="noopener">
+                                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                                Book on WhatsApp
                             </a>
                         </figcaption>
                     </figure>
                 </div>
 
-                <p class="gallery-empty" hidden>No work in this category yet. <a href="https://wa.me/254702555093" target="_blank" rel="noopener" class="text-link">Ask us for recent photos →</a></p>
+                <p class="gallery-empty" hidden>No work in this category yet. <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20Can%20you%20send%20me%20photos%20of%20recent%20work%3F" class="text-link" target="_blank" rel="noopener">Ask on WhatsApp →</a></p>
             </div>
         </section>
 
         <section class="final-cta" id="book">
             <div class="container">
                 <h2>Found a look you love?</h2>
-                <p>Send us the photo on WhatsApp. We'll tell you if it's doable—and if it's not, we'll say so. Then we'll book your slot in under 15 minutes.</p>
+                <p>Send me the photo on WhatsApp. I'll tell you if it's doable—and if it's not, I'll say so. Then I'll book your slot in under 15 minutes.</p>
                 <div class="cta-buttons">
-                    <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20a%20look%20I%20like%20in%20your%20gallery.%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F"
-                       class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener"
-                       data-track-location="gallery-final-cta" data-service="General">
+                    <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20saw%20a%20look%20I%20like%20in%20your%20gallery.%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F" class="btn btn-whatsapp btn-lg" data-track-location="gallery-final-cta" data-service="Book" target="_blank" rel="noopener">
                         <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
-                        <span>Send Us Your Photo</span>
+                        <span>Book on WhatsApp</span>
                     </a>
-                    <a href="book.html" class="btn btn-outline btn-lg" data-track-location="gallery-final-cta">Use Our Booking Form</a>
+                    <a href="services.html" class="btn btn-outline btn-lg" data-track-location="gallery-final-cta" data-service="Services">See Services &amp; Prices</a>
                 </div>
-                <p class="microcopy">7-Day Fix Guarantee. If it's not perfect, we redo it free.</p>
+                <p class="microcopy">7-Day Fix Guarantee. If it's not perfect, I redo it free.</p>
             </div>
         </section>
     </main>
@@ -302,23 +296,24 @@
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="/#home">Home</a></li>
+                    <li><a href="index.html#home">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="about.html">Meet Harrison</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="/#contact">Contact</a></li>
+                    <li><a href="book.html">Booking Form</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Book Now</h4>
                 <ul>
-                    <li><a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener" data-track-location="footer">WhatsApp: 0702 555 093</a></li>
-                    <li><a href="tel:+254702555093" data-track-location="footer">Call: 0702 555 093</a></li>
+                    <li><a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener" data-track-location="footer" data-service="Book">Book on WhatsApp</a></li>
+                    <li><a href="index.html#contact" data-track-location="footer">Phone: 0702 555 093</a></li>
                 </ul>
                 <div class="social-links">
-                    <a href="https://instagram.com/sharpsfadesnairobi" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg></a>
-                    <a href="https://facebook.com/sharpsfadesnairobi" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"></use></svg></a>
+                    <a href="#social" aria-label="Instagram (placeholder)" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg></a>
+                    <a href="#social" aria-label="Facebook (placeholder)" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"></use></svg></a>
                 </div>
             </div>
             <div class="footer-col">
@@ -337,9 +332,7 @@
     </footer>
 
     <div class="mobile-sticky-bar" id="mobile-sticky-bar">
-        <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20Could%20you%20let%20me%20know%20your%20availability%3F"
-           class="btn btn-whatsapp btn-block" target="_blank" rel="noopener"
-           data-track-location="sticky-bar" data-service="General">
+        <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F" class="btn btn-whatsapp btn-block" data-track-location="sticky-bar" data-service="Book" target="_blank" rel="noopener">
             <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
             <span>Book on WhatsApp</span>
         </a>

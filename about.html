@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meet Harrison Cheruiyot | SharpFades Nairobi</title>
-    <meta name="description" content="Meet Harrison Cheruiyot—12+ years behind the chair, certified in advanced fade techniques, and trusted by 500+ Nairobi clients. Send a photo. He'll tell you the truth.">
+    <meta name="description" content="Meet Harrison Cheruiyot—12+ years behind the chair, certified in advanced fade techniques, and trusted by 500+ Nairobi clients. Book on WhatsApp.">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0D0D0D">
     <link rel="canonical" href="https://www.sharpsfades.co.ke/about.html">
 
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230D0D0D'/%3E%3Cg fill='none' stroke='%23B8860B' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M7 16h18'/%3E%3Cpath d='M7 16l6-6'/%3E%3Cpath d='M7 16l6 6'/%3E%3C/g%3E%3Ccircle cx='7' cy='16' r='2' fill='%23B8860B'/%3E%3Ccircle cx='25' cy='16' r='2' fill='%23B8860B'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230D0D0D'/%3E%3Cg fill='none' stroke='%23B8860B' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M7 16h18'/%3E%3Cpath d='M7 16l6-6'/%3E%3Cpath d='M7 16l6 6'/%3E%3C/g%3E%3Ccircle cx='7' cy='16' r='2' fill='%23B8860B'/%3E%3Ccircle cx='25' cy='16' r='2' fill='%23B8860B'/%3E%3C/svg%3E">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.sharpsfades.co.ke/about.html">
@@ -26,7 +28,16 @@
 
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
-    <script>document.documentElement.classList.remove('no-js');</script>
+    <script>
+        document.documentElement.classList.add('js');
+        document.documentElement.classList.remove('no-js');
+        setTimeout(function () {
+            if (!window.sfReady) {
+                document.documentElement.classList.remove('js');
+                document.documentElement.classList.add('no-js');
+            }
+        }, 1500);
+    </script>
 </head>
 <body>
     <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
@@ -34,7 +45,7 @@
 
     <header class="site-header" id="site-header">
         <div class="container header-inner">
-            <a href="/" class="logo" aria-label="SharpFades Nairobi Home">
+            <a href="index.html" class="logo" aria-label="SharpFades Nairobi Home">
                 <svg class="logo-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M6 12L18 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     <path d="M6 12L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -46,18 +57,20 @@
             </a>
             <nav class="main-nav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="/#home">Home</a></li>
+                    <li><a href="index.html#home">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="about.html" aria-current="page" class="text-gold">Meet Harrison</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="/#contact">Contact</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F" class="nav-book" data-track-location="nav" data-service="Book" target="_blank" rel="noopener">
+                        <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                        Book Now
+                    </a></li>
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="https://wa.me/254702555093?text=Hi%20Harrison!%20I'd%20like%20to%20book%20an%20appointment%20with%20you.%20Could%20you%20let%20me%20know%20your%20availability%3F"
-                   class="btn btn-whatsapp" target="_blank" rel="noopener"
-                   data-track-location="header" data-service="General" aria-label="Book on WhatsApp">
+                <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F" class="btn btn-whatsapp" data-track-location="header" data-service="Book" aria-label="Book on WhatsApp" target="_blank" rel="noopener">
                     <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-whatsapp"></use></svg>
                     <span>Book on WhatsApp</span>
                 </a>
@@ -68,17 +81,18 @@
         </div>
         <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
             <ul>
-                <li><a href="/#home">Home</a></li>
+                <li><a href="index.html#home">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="about.html" class="text-gold">Meet Harrison</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="/#contact">Contact</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
-            <a href="https://wa.me/254702555093?text=Hi%20Harrison!%20I'd%20like%20to%20book%20an%20appointment%20with%20you."
-               class="btn btn-whatsapp btn-block" target="_blank" rel="noopener"
-               data-track-location="mobile-menu" data-service="General">Book on WhatsApp</a>
-            <a href="tel:+254702555093" class="btn btn-outline btn-block" data-track-location="mobile-menu">Call: 0702 555 093</a>
+            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F" class="btn btn-whatsapp btn-block" data-track-location="mobile-menu" data-service="Book" target="_blank" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                Book on WhatsApp
+            </a>
+            <a href="index.html#contact" class="btn btn-outline btn-block" data-track-location="mobile-menu" data-cta-type="contact">Contact &amp; Directions</a>
         </nav>
     </header>
 
@@ -86,7 +100,7 @@
         <section class="page-hero">
             <div class="container">
                 <nav class="breadcrumb" aria-label="Breadcrumb">
-                    <a href="/">Home</a>
+                    <a href="index.html">Home</a>
                     <span aria-hidden="true">/</span>
                     <span aria-current="page">Meet Harrison</span>
                 </nav>
@@ -104,12 +118,10 @@
                     <p class="meet-barber-lead">Hi, I'm <strong>Harrison Cheruiyot</strong> — the man behind the chair at SharpFades Nairobi.</p>
                     <p>I've been cutting hair for over a decade. In that time, I've learned one thing: most men don't want a haircut. They want to walk out looking like the version of themselves they see in their head.</p>
                     <p>That's my job. Not just to cut hair—but to match the vision.</p>
-                    <p>Send me a photo of what you want. I'll tell you if it's doable. If it's not, I'll say so. And if you're not happy, come back within 7 days and I'll fix it free. That's the SharpFades promise.</p>
-                    <a href="https://wa.me/254702555093?text=Hi%20Harrison!%20I'd%20like%20to%20book%20an%20appointment%20with%20you.%20Could%20you%20let%20me%20know%20your%20availability%3F"
-                       class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener"
-                       data-track-location="about-hero" data-service="General">
+                    <p>Send me a photo on WhatsApp of what you want. I'll tell you if it's doable. If it's not, I'll say so. And if you're not happy, come back within 7 days and I'll fix it free. That's the SharpFades promise.</p>
+                    <a href="https://wa.me/254702555093?text=Hi%20Harrison!%20I'd%20like%20to%20book%20an%20appointment%20with%20you.%20What%20times%20do%20you%20have%20available%3F" class="btn btn-whatsapp btn-lg" data-track-location="about-hero" data-service="Book" target="_blank" rel="noopener">
                         <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
-                        <span>Book with Harrison</span>
+                        <span>Message Harrison on WhatsApp</span>
                     </a>
                 </div>
             </div>
@@ -137,7 +149,7 @@
                     <div class="credential-card">
                         <span class="credential-number">100%</span>
                         <h3>Fix Guarantee</h3>
-                        <p>Every cut is backed by our 7-Day Fix Guarantee. You risk nothing.</p>
+                        <p>Every cut is backed by my 7-Day Fix Guarantee. You risk nothing.</p>
                     </div>
                 </div>
             </div>
@@ -183,20 +195,15 @@
         <section class="final-cta" id="book">
             <div class="container">
                 <h2>Ready to sit in the chair?</h2>
-                <p>Send me a message on WhatsApp. Tell me what you're looking for. I'll confirm your slot in under 15 minutes.</p>
+                <p>Tap the button — WhatsApp opens with your message ready. Tell me what you're looking for. I'll confirm in under 15 minutes during business hours.</p>
                 <div class="cta-buttons">
-                    <a href="https://wa.me/254702555093?text=Hi%20Harrison!%20I'd%20like%20to%20book%20an%20appointment%20with%20you.%20Could%20you%20let%20me%20know%20your%20availability%3F"
-                       class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener"
-                       data-track-location="about-final-cta" data-service="General">
+                    <a href="https://wa.me/254702555093?text=Hi%20Harrison!%20I'd%20like%20to%20book%20an%20appointment%20with%20you.%20What%20times%20do%20you%20have%20available%3F" class="btn btn-whatsapp btn-lg" data-track-location="about-final-cta" data-service="Book" target="_blank" rel="noopener">
                         <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
-                        <span>Book with Harrison</span>
+                        <span>Book with Harrison on WhatsApp</span>
                     </a>
-                    <a href="tel:+254702555093" class="btn btn-outline btn-lg" data-track-location="about-final-cta">
-                        <svg class="icon" aria-hidden="true"><use href="#icon-phone"></use></svg>
-                        <span>Call: 0702 555 093</span>
-                    </a>
+                    <a href="index.html#contact" class="btn btn-outline btn-lg" data-track-location="about-final-cta" data-cta-type="contact">Contact &amp; Directions</a>
                 </div>
-                <p class="microcopy">Walk-ins welcome. Booking guarantees your slot.</p>
+                <p class="microcopy">Walk-ins welcome. Booking on WhatsApp guarantees your slot.</p>
             </div>
         </section>
     </main>
@@ -211,23 +218,24 @@
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="/#home">Home</a></li>
+                    <li><a href="index.html#home">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="about.html">Meet Harrison</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="/#contact">Contact</a></li>
+                    <li><a href="book.html">Booking Form</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Book Now</h4>
                 <ul>
-                    <li><a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener" data-track-location="footer">WhatsApp: 0702 555 093</a></li>
-                    <li><a href="tel:+254702555093" data-track-location="footer">Call: 0702 555 093</a></li>
+                    <li><a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener" data-track-location="footer" data-service="Book">Book on WhatsApp</a></li>
+                    <li><a href="index.html#contact" data-track-location="footer">Phone: 0702 555 093</a></li>
                 </ul>
                 <div class="social-links">
-                    <a href="https://instagram.com/sharpsfadesnairobi" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg></a>
-                    <a href="https://facebook.com/sharpsfadesnairobi" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"></use></svg></a>
+                    <a href="#social" aria-label="Instagram (placeholder)" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg></a>
+                    <a href="#social" aria-label="Facebook (placeholder)" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"></use></svg></a>
                 </div>
             </div>
             <div class="footer-col">
@@ -246,9 +254,7 @@
     </footer>
 
     <div class="mobile-sticky-bar" id="mobile-sticky-bar">
-        <a href="https://wa.me/254702555093?text=Hi%20Harrison!%20I'd%20like%20to%20book%20an%20appointment."
-           class="btn btn-whatsapp btn-block" target="_blank" rel="noopener"
-           data-track-location="sticky-bar" data-service="General">
+        <a href="https://wa.me/254702555093?text=Hi%20Harrison!%20I'd%20like%20to%20book%20an%20appointment%20with%20you.%20What%20times%20do%20you%20have%20available%3F" class="btn btn-whatsapp btn-block" data-track-location="sticky-bar" data-service="Book" target="_blank" rel="noopener">
             <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
             <span>Book with Harrison</span>
         </a>

@@ -6,9 +6,11 @@
     <title>Blog | SharpFades Nairobi — Grooming Guides & Style Tips</title>
     <meta name="description" content="Practical grooming advice for Nairobi men. How to ask for a fade, beard care tips, and how often to get a haircut.">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0D0D0D">
     <link rel="canonical" href="https://www.sharpsfades.co.ke/blog.html">
 
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230D0D0D'/%3E%3Cg fill='none' stroke='%23B8860B' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M7 16h18'/%3E%3Cpath d='M7 16l6-6'/%3E%3Cpath d='M7 16l6 6'/%3E%3C/g%3E%3Ccircle cx='7' cy='16' r='2' fill='%23B8860B'/%3E%3Ccircle cx='25' cy='16' r='2' fill='%23B8860B'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230D0D0D'/%3E%3Cg fill='none' stroke='%23B8860B' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M7 16h18'/%3E%3Cpath d='M7 16l6-6'/%3E%3Cpath d='M7 16l6 6'/%3E%3C/g%3E%3Ccircle cx='7' cy='16' r='2' fill='%23B8860B'/%3E%3Ccircle cx='25' cy='16' r='2' fill='%23B8860B'/%3E%3C/svg%3E">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.sharpsfades.co.ke/blog.html">
@@ -42,7 +44,7 @@
 
     <header class="site-header" id="site-header">
         <div class="container header-inner">
-            <a href="/" class="logo" aria-label="SharpFades Nairobi Home">
+            <a href="index.html" class="logo" aria-label="SharpFades Nairobi Home">
                 <svg class="logo-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M6 12L18 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     <path d="M6 12L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -54,18 +56,20 @@
             </a>
             <nav class="main-nav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="/#home">Home</a></li>
+                    <li><a href="index.html#home">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="about.html">Meet Harrison</a></li>
                     <li><a href="blog.html" aria-current="page" class="text-gold">Blog</a></li>
-                    <li><a href="/#contact">Contact</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F" class="nav-book" data-track-location="nav" data-service="Book" target="_blank" rel="noopener">
+                        <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                        Book Now
+                    </a></li>
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20Could%20you%20let%20me%20know%20your%20availability%3F"
-                   class="btn btn-whatsapp" target="_blank" rel="noopener"
-                   data-track-location="header" data-service="General" aria-label="Book on WhatsApp">
+                <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F" class="btn btn-whatsapp" data-track-location="header" data-service="Book" aria-label="Book on WhatsApp" target="_blank" rel="noopener">
                     <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-whatsapp"></use></svg>
                     <span>Book on WhatsApp</span>
                 </a>
@@ -76,17 +80,18 @@
         </div>
         <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
             <ul>
-                <li><a href="/#home">Home</a></li>
+                <li><a href="index.html#home">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="about.html">Meet Harrison</a></li>
                 <li><a href="blog.html" class="text-gold">Blog</a></li>
-                <li><a href="/#contact">Contact</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
-            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment."
-               class="btn btn-whatsapp btn-block" target="_blank" rel="noopener"
-               data-track-location="mobile-menu" data-service="General">Book on WhatsApp</a>
-            <a href="tel:+254702555093" class="btn btn-outline btn-block" data-track-location="mobile-menu">Call: 0702 555 093</a>
+            <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F" class="btn btn-whatsapp btn-block" data-track-location="mobile-menu" data-service="Book" target="_blank" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
+                Book on WhatsApp
+            </a>
+            <a href="index.html#contact" class="btn btn-outline btn-block" data-track-location="mobile-menu" data-cta-type="contact">Contact &amp; Directions</a>
         </nav>
     </header>
 
@@ -94,7 +99,7 @@
         <section class="page-hero">
             <div class="container">
                 <nav class="breadcrumb" aria-label="Breadcrumb">
-                    <a href="/">Home</a>
+                    <a href="index.html">Home</a>
                     <span aria-hidden="true">/</span>
                     <span aria-current="page">Blog</span>
                 </nav>
@@ -105,6 +110,7 @@
 
         <section class="blog-section">
             <div class="container">
+                <p class="section-sub">New guides landing soon. In the meantime, message me on WhatsApp and ask — free consultation.</p>
                 <div class="blog-grid">
                     <article class="blog-card">
                         <div class="blog-card-image">
@@ -112,9 +118,12 @@
                         </div>
                         <div class="blog-card-body">
                             <span class="blog-category">Guides</span>
-                            <h2><a href="#">How to Ask for the Perfect Fade (With Photos)</a></h2>
+                            <h2>How to Ask for the Perfect Fade (With Photos)</h2>
                             <p>Skin fade, taper fade, low fade, high fade—here's exactly what to say (and show) your barber to get the cut you actually want.</p>
-                            <span class="blog-meta">5 min read</span>
+                            <div class="blog-meta-row">
+                                <span>5 min read</span>
+                                <span class="blog-coming-soon">Coming soon</span>
+                            </div>
                         </div>
                     </article>
 
@@ -124,9 +133,12 @@
                         </div>
                         <div class="blog-card-body">
                             <span class="blog-category">Beards</span>
-                            <h2><a href="#">Beard Grooming 101: A Nairobi Man's Guide</a></h2>
+                            <h2>Beard Grooming 101: A Nairobi Man's Guide</h2>
                             <p>The humidity, the dust, the long days—here's how to keep your beard looking sharp in Nairobi's climate.</p>
-                            <span class="blog-meta">6 min read</span>
+                            <div class="blog-meta-row">
+                                <span>6 min read</span>
+                                <span class="blog-coming-soon">Coming soon</span>
+                            </div>
                         </div>
                     </article>
 
@@ -136,9 +148,12 @@
                         </div>
                         <div class="blog-card-body">
                             <span class="blog-category">Tips</span>
-                            <h2><a href="#">How Often Should You Get a Haircut?</a></h2>
+                            <h2>How Often Should You Get a Haircut?</h2>
                             <p>Once a week? Once a month? The answer depends on your style, your hair type, and how sharp you want to look.</p>
-                            <span class="blog-meta">4 min read</span>
+                            <div class="blog-meta-row">
+                                <span>4 min read</span>
+                                <span class="blog-coming-soon">Coming soon</span>
+                            </div>
                         </div>
                     </article>
 
@@ -148,9 +163,12 @@
                         </div>
                         <div class="blog-card-body">
                             <span class="blog-category">Guides</span>
-                            <h2><a href="#">Skin Fade vs. Taper Fade: What's the Difference?</a></h2>
+                            <h2>Skin Fade vs. Taper Fade: What's the Difference?</h2>
                             <p>They look similar, but they're not the same. Here's how to tell the difference—and which one suits your face shape.</p>
-                            <span class="blog-meta">5 min read</span>
+                            <div class="blog-meta-row">
+                                <span>5 min read</span>
+                                <span class="blog-coming-soon">Coming soon</span>
+                            </div>
                         </div>
                     </article>
 
@@ -160,9 +178,12 @@
                         </div>
                         <div class="blog-card-body">
                             <span class="blog-category">Shaving</span>
-                            <h2><a href="#">Why a Hot Towel Shave Beats a Disposable Razor</a></h2>
+                            <h2>Why a Hot Towel Shave Beats a Disposable Razor</h2>
                             <p>Less irritation, closer shave, and a few minutes of calm. Here's why it's worth the upgrade.</p>
-                            <span class="blog-meta">4 min read</span>
+                            <div class="blog-meta-row">
+                                <span>4 min read</span>
+                                <span class="blog-coming-soon">Coming soon</span>
+                            </div>
                         </div>
                     </article>
 
@@ -172,22 +193,22 @@
                         </div>
                         <div class="blog-card-body">
                             <span class="blog-category">Behind the Chair</span>
-                            <h2><a href="#">Why I'll Tell You If a Style Won't Work</a></h2>
+                            <h2>Why I'll Tell You If a Style Won't Work</h2>
                             <p>Harrison explains why honesty is better than a cut that doesn't suit you—and how he decides what works.</p>
-                            <span class="blog-meta">3 min read</span>
+                            <div class="blog-meta-row">
+                                <span>3 min read</span>
+                                <span class="blog-coming-soon">Coming soon</span>
+                            </div>
                         </div>
                     </article>
                 </div>
 
                 <div class="blog-cta">
-                    <p><strong>Want to be notified when we publish new guides?</strong> Follow us on Instagram or message us on WhatsApp.</p>
+                    <p><strong>Want a guide on a specific topic?</strong> Message me on WhatsApp and ask. I answer personally.</p>
                     <div class="cta-buttons">
-                        <a href="https://instagram.com/sharpsfadesnairobi" target="_blank" rel="noopener" class="btn btn-outline">Follow on Instagram</a>
-                        <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20have%20a%20question%20about%20grooming.%20Can%20you%20help%3F"
-                           class="btn btn-whatsapp" target="_blank" rel="noopener"
-                           data-track-location="blog-cta" data-service="General">
+                        <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I%20have%20a%20grooming%20question.%20Could%20you%20help%3F" class="btn btn-whatsapp" data-track-location="blog-cta" data-service="Book" target="_blank" rel="noopener">
                             <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
-                            <span>Ask Us Anything</span>
+                            <span>Ask on WhatsApp</span>
                         </a>
                     </div>
                 </div>
@@ -197,11 +218,9 @@
         <section class="final-cta" id="book">
             <div class="container">
                 <h2>Read enough? Let's get you in the chair.</h2>
-                <p>Send us a message on WhatsApp. We'll confirm your slot in under 15 minutes during business hours.</p>
+                <p>Tap the button — WhatsApp opens with your message ready. I'll confirm within 15 minutes during business hours.</p>
                 <div class="cta-buttons">
-                    <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F"
-                       class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener"
-                       data-track-location="blog-final-cta" data-service="General">
+                    <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F" class="btn btn-whatsapp btn-lg" data-track-location="blog-final-cta" data-service="Book" target="_blank" rel="noopener">
                         <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
                         <span>Book on WhatsApp</span>
                     </a>
@@ -221,23 +240,24 @@
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="/#home">Home</a></li>
+                    <li><a href="index.html#home">Home</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="about.html">Meet Harrison</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <li><a href="/#contact">Contact</a></li>
+                    <li><a href="book.html">Booking Form</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Book Now</h4>
                 <ul>
-                    <li><a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener" data-track-location="footer">WhatsApp: 0702 555 093</a></li>
-                    <li><a href="tel:+254702555093" data-track-location="footer">Call: 0702 555 093</a></li>
+                    <li><a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener" data-track-location="footer" data-service="Book">Book on WhatsApp</a></li>
+                    <li><a href="index.html#contact" data-track-location="footer">Phone: 0702 555 093</a></li>
                 </ul>
                 <div class="social-links">
-                    <a href="https://instagram.com/sharpsfadesnairobi" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg></a>
-                    <a href="https://facebook.com/sharpsfadesnairobi" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"></use></svg></a>
+                    <a href="#social" aria-label="Instagram (placeholder)" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg></a>
+                    <a href="#social" aria-label="Facebook (placeholder)" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#icon-facebook"></use></svg></a>
                 </div>
             </div>
             <div class="footer-col">
@@ -256,9 +276,7 @@
     </footer>
 
     <div class="mobile-sticky-bar" id="mobile-sticky-bar">
-        <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment."
-           class="btn btn-whatsapp btn-block" target="_blank" rel="noopener"
-           data-track-location="sticky-bar" data-service="General">
+        <a href="https://wa.me/254702555093?text=Hi%20SharpFades!%20I'd%20like%20to%20book%20an%20appointment.%20What%20times%20do%20you%20have%20available%3F" class="btn btn-whatsapp btn-block" data-track-location="sticky-bar" data-service="Book" target="_blank" rel="noopener">
             <svg class="icon" aria-hidden="true"><use href="#icon-whatsapp"></use></svg>
             <span>Book on WhatsApp</span>
         </a>

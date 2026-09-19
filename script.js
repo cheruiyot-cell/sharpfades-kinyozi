@@ -1,3 +1,8 @@
+/* ============================================================
+   SharpFades Nairobi — Master Script
+   WhatsApp-first interactions · accessibility · analytics
+   ============================================================ */
+
 // Signal that JS is alive so the inline <head> safety-net does not strip
 // the `.js` class after its 1500 ms timeout.
 window.sfReady = true;
@@ -16,26 +21,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroImage = document.querySelector('.hero-image img');
 
     const scrollOffset = 50;
-    const stickyBarThreshold = 600;
+    const stickyBarThreshold = 150;
     const backToTopThreshold = 400;
 
-    // ===== Analytics Helper =====
+    // ===== Analytics =====
     function trackEvent(eventName, params = {}) {
         if (typeof window.gtag === 'function') {
             window.gtag('event', eventName, params);
         }
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:') {
+        if (window.location.hostname === 'localhost' ||
+            window.location.hostname === '127.0.0.1' ||
+            window.location.protocol === 'file:') {
             console.log('[Analytics]', eventName, params);
         }
     }
     window.sfTrackEvent = trackEvent;
 
-    // ===== WhatsApp & Call Click Tracking =====
-    document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"]').forEach(link => {
+    // ===== Tracked Clicks =====
+    document.querySelectorAll('a[data-track-location]').forEach(link => {
         link.addEventListener('click', () => {
-            const location = link.dataset.trackLocation || (link.closest('section') && link.closest('section').id) || 'unknown';
+            const href = link.getAttribute('href') || '';
+            const location = link.dataset.trackLocation || 'unknown';
             const service = link.dataset.service || 'General';
-            trackEvent('whatsapp_click', {
+
+            let type = 'link_click';
+            if (href.includes('wa.me')) type = 'whatsapp_click';
+            else if (href.includes('book.html')) type = 'booking_form_click';
+            else if (href.endsWith('#contact')) type = 'contact_click';
+            else if (href.endsWith('#social')) type = 'social_click';
+
+            trackEvent(type, {
                 event_category: 'engagement',
                 event_label: `${location} — ${service}`,
                 location,
@@ -44,33 +59,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-        link.addEventListener('click', () => {
-            const location = link.dataset.trackLocation || (link.closest('section') && link.closest('section').id) || 'unknown';
-            trackEvent('call_click', {
-                event_category: 'engagement',
-                event_label: location,
-                location
-            });
-        });
-    });
-
     // ===== Scroll Handling =====
     let ticking = false;
     function handleScroll() {
         const scrolled = window.scrollY;
+
         if (header) header.classList.toggle('scrolled', scrolled > scrollOffset);
         if (mobileStickyBar) mobileStickyBar.classList.toggle('visible', scrolled > stickyBarThreshold);
         if (backToTop) backToTop.classList.toggle('visible', scrolled > backToTopThreshold);
+
         if (progressBar) {
             const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
             const scrollPercent = scrollHeight > 0 ? (scrolled / scrollHeight) * 100 : 0;
             progressBar.style.width = scrollPercent + '%';
         }
+
         if (heroImage && !prefersReducedMotion) {
             const factor = isMobile ? 0.05 : 0.15;
             heroImage.style.transform = `translateY(${scrolled * factor}px)`;
         }
+
         ticking = false;
     }
 
@@ -107,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navToggle.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
             mobileMenu.classList.toggle('open', !expanded);
             document.body.style.overflow = expanded ? '' : 'hidden';
+
             if (!expanded) {
                 const firstLink = mobileMenu.querySelector('a, button');
                 if (firstLink) setTimeout(() => firstLink.focus(), 100);
@@ -217,7 +226,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== Scroll-triggered Animations =====
     const animatedElements = document.querySelectorAll(
-        '.animate-on-scroll, .prop-card, .package-card, .testimonial-card, .process-steps li, .gallery-grid figure, .gallery-item, .blog-card, .credential-card, .philosophy-card, .sidebar-card'
+        '.animate-on-scroll, .prop-card, .package-card, .testimonial-card, .process-steps li, ' +
+        '.gallery-grid figure, .gallery-item, .blog-card, .credential-card, .philosophy-card, .sidebar-card'
     );
     animatedElements.forEach(el => {
         if (!el.classList.contains('animate-on-scroll')) {
@@ -311,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== Magnetic Buttons (large CTAs only) =====
+    // ===== Magnetic Buttons =====
     if (!isTouchDevice && !prefersReducedMotion) {
         const magneticButtons = document.querySelectorAll('.btn-lg');
         magneticButtons.forEach(btn => {
@@ -367,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== Lightbox =====
+    // ===== Lightbox (with focus trap) =====
     const lightbox = document.getElementById('lightbox');
     if (lightbox) {
         const lightboxImg = lightbox.querySelector('.lightbox-img');
@@ -377,6 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let currentIndex = 0;
         let galleryList = [];
+        let previouslyFocused = null;
 
         const refreshGalleryList = () => {
             galleryList = Array.from(document.querySelectorAll('.gallery-item'))
@@ -407,10 +418,27 @@ document.addEventListener('DOMContentLoaded', () => {
             lightbox.hidden = true;
             lightbox.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
+            if (previouslyFocused) previouslyFocused.focus();
         };
+
+        // Focus trap
+        lightbox.addEventListener('keydown', (e) => {
+            if (e.key !== 'Tab') return;
+            const focusable = [closeBtn, prevBtn, nextBtn].filter(Boolean);
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        });
 
         document.querySelectorAll('[data-lightbox-src]').forEach(btn => {
             btn.addEventListener('click', () => {
+                previouslyFocused = btn;
                 refreshGalleryList();
                 const item = btn.closest('.gallery-item');
                 const index = galleryList.findIndex(g => g.src === btn.dataset.lightboxSrc);
@@ -440,10 +468,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== Booking Form → WhatsApp Handoff =====
+    // ===== Booking Form → WhatsApp handoff =====
     const bookingForm = document.getElementById('booking-form');
     if (bookingForm) {
         const dateInput = document.getElementById('bf-date');
+        const successBox = document.getElementById('booking-success');
+        const summaryBox = document.getElementById('booking-summary');
+
         if (dateInput) {
             const today = new Date();
             const yyyy = today.getFullYear();
@@ -466,9 +497,20 @@ document.addEventListener('DOMContentLoaded', () => {
             field.removeAttribute('aria-invalid');
         };
 
+        const isSunday = (value) => {
+            if (!value) return false;
+            const d = new Date(`${value}T00:00:00`);
+            return d.getDay() === 0;
+        };
+
         bookingForm.querySelectorAll('input, select, textarea').forEach(field => {
             field.addEventListener('input', () => clearError(field));
-            field.addEventListener('change', () => clearError(field));
+            field.addEventListener('change', () => {
+                clearError(field);
+                if (field === dateInput && isSunday(field.value)) {
+                    showError(field, "I'm closed Sundays. Please pick a Mon–Sat date.");
+                }
+            });
         });
 
         bookingForm.addEventListener('submit', (e) => {
@@ -486,9 +528,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!name.value.trim()) { showError(name, 'Please enter your name.'); hasError = true; }
             if (!phone.value.trim()) { showError(phone, 'Please enter your phone number.'); hasError = true; }
-            else if (phone.value.replace(/\D/g, '').length < 9) { showError(phone, 'Please enter a valid phone number.'); hasError = true; }
+            else if (phone.value.replace(/\D/g, '').length < 9) {
+                showError(phone, 'Please enter a valid phone number.'); hasError = true;
+            }
             if (!service.value) { showError(service, 'Please choose a service.'); hasError = true; }
             if (!date.value) { showError(date, 'Please choose a date.'); hasError = true; }
+            else if (isSunday(date.value)) {
+                showError(date, "I'm closed Sundays. Please pick a Mon–Sat date."); hasError = true;
+            }
             if (!time.value) { showError(time, 'Please choose a time.'); hasError = true; }
 
             if (hasError) {
@@ -497,28 +544,65 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const message = [
-                `Hi SharpFades! I'd like to book an appointment.`,
-                ``,
-                `Name: ${name.value.trim()}`,
-                `Phone: ${phone.value.trim()}`,
-                `Service: ${service.value}`,
-                `Preferred date: ${date.value}`,
-                `Preferred time: ${time.value}`,
-                notes.value.trim() ? `Notes: ${notes.value.trim()}` : null,
-                ``,
-                `Please confirm availability. Thank you!`
+            const payload = {
+                name: name.value.trim(),
+                phone: phone.value.trim(),
+                service: service.value,
+                date: date.value,
+                time: time.value,
+                notes: notes.value.trim()
+            };
+
+            // Build WhatsApp message
+            const lines = [
+                "Hi SharpFades! I'd like to book an appointment.",
+                "",
+                `Name: ${payload.name}`,
+                `Phone: ${payload.phone}`,
+                `Service: ${payload.service}`,
+                `Preferred date: ${payload.date}`,
+                `Preferred time: ${payload.time}`,
+                payload.notes ? `Notes: ${payload.notes}` : null,
+                "",
+                "Please confirm availability. Thank you!"
             ].filter(Boolean).join('\n');
 
-            const waUrl = `https://wa.me/254702555093?text=${encodeURIComponent(message)}`;
+            const waUrl = `https://wa.me/254702555093?text=${encodeURIComponent(lines)}`;
 
             trackEvent('booking_form_submit', {
                 event_category: 'conversion',
-                event_label: service.value,
-                service: service.value
+                event_label: payload.service,
+                service: payload.service
             });
 
+            // Open WhatsApp
             window.open(waUrl, '_blank', 'noopener');
+
+            // Inline confirmation
+            if (summaryBox) {
+                const notesLine = payload.notes
+                    ? `<li><strong>Notes:</strong> ${payload.notes}</li>`
+                    : '';
+                summaryBox.innerHTML = `
+                    <p><strong>Thanks, ${payload.name}.</strong> WhatsApp should have opened with your details — tap Send to confirm.</p>
+                    <ul class="booking-summary-list">
+                        <li><strong>Service:</strong> ${payload.service}</li>
+                        <li><strong>Date:</strong> ${payload.date}</li>
+                        <li><strong>Time:</strong> ${payload.time}</li>
+                        <li><strong>Phone:</strong> ${payload.phone}</li>
+                        ${notesLine}
+                    </ul>
+                    <p>Didn't open? <a href="${waUrl}" target="_blank" rel="noopener" class="text-link">Tap here to open WhatsApp →</a></p>
+                `;
+            }
+            if (successBox) {
+                successBox.hidden = false;
+                successBox.scrollIntoView({ behavior: scrollBehavior, block: 'center' });
+                const heading = successBox.querySelector('h3');
+                if (heading) heading.focus();
+            }
+
+            bookingForm.reset();
         });
     }
 

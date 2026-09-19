@@ -1,7 +1,7 @@
 /* ============================================================
    SharpFades Nairobi — Master Stylesheet
    Design tokens · base · components · page modules · responsive
-   Updated: increased breathing space, overlap fixes
+   Updated: slimmer, context-aware mobile sticky bar
    ============================================================ */
 
 /* ===== Design Tokens ===== */
@@ -30,10 +30,10 @@
     /* Spacing — slightly more generous for breathing room */
     --space-xs: 0.5rem;
     --space-sm: 1rem;
-    --space-md: 2rem;      /* was 1.5rem */
-    --space-lg: 2.75rem;   /* was 2rem */
-    --space-xl: 5rem;      /* was 4rem */
-    --space-2xl: 7rem;     /* was 6rem */
+    --space-md: 2rem;
+    --space-lg: 2.75rem;
+    --space-xl: 5rem;
+    --space-2xl: 7rem;
 
     --radius-sm: 8px;
     --radius-md: 12px;
@@ -50,7 +50,8 @@
     --header-h: 72px;
     --header-h-scrolled: 56px;
     --category-nav-h: 56px;
-    --mobile-sticky-h: 80px;
+    /* Slimmed base height; JS keeps this in sync with the real rendered height */
+    --mobile-sticky-h: 58px;
 }
 
 /* ===== Reset & Base ===== */
@@ -74,7 +75,7 @@ html {
 body {
     font-family: var(--font-body);
     font-size: 1rem;
-    line-height: 1.65;          /* slightly looser for readability */
+    line-height: 1.65;
     color: var(--clr-text-primary);
     background-color: var(--clr-bg);
     -webkit-font-smoothing: antialiased;
@@ -175,6 +176,10 @@ h1, h2, h3, h4 { overflow-wrap: break-word; }
         opacity: 1 !important;
         transform: none !important;
     }
+    /* Respect reduced motion for the sticky bar slide */
+    .mobile-sticky-bar {
+        transition: none !important;
+    }
 }
 
 /* ===== No-JS Fallback ===== */
@@ -196,7 +201,7 @@ h1, h2, h3, h4 { overflow-wrap: break-word; }
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.85rem 1.6rem;      /* slightly more generous hit target */
+    padding: 0.85rem 1.6rem;
     border-radius: var(--radius-full);
     font-weight: 700;
     font-size: 1rem;
@@ -781,7 +786,7 @@ h1, h2, h3, h4 { overflow-wrap: break-word; }
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
     margin-bottom: 2.5rem;
-    padding-top: 1rem; /* headroom for the "popular" badge */
+    padding-top: 1rem;
 }
 .package-card {
     background: var(--clr-surface);
@@ -1333,28 +1338,37 @@ h1, h2, h3, h4 { overflow-wrap: break-word; }
     box-shadow: 0 6px 20px rgba(200, 155, 90, 0.4);
 }
 
-/* ===== Mobile Sticky Bottom Bar ===== */
+/* ===== Mobile Sticky Bottom Bar =====
+   Slimmer, direction-aware, and self-suppressing when a full WhatsApp CTA
+   is already visible in the viewport. */
 .mobile-sticky-bar {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     background: var(--clr-dark);
-    padding: 0.85rem 1rem;
-    padding-bottom: calc(0.85rem + env(safe-area-inset-bottom, 0));
+    padding: 0.45rem 0.75rem;
+    padding-bottom: calc(0.45rem + env(safe-area-inset-bottom, 0px));
     display: flex;
     gap: 0.5rem;
     z-index: 98;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.18);
     transform: translateY(100%);
-    transition: transform var(--transition-base);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
 }
 .mobile-sticky-bar.visible { transform: translateY(0); }
+/* Suppressed: a real booking CTA is already on screen, so get out of the way.
+   Declared after .visible so it wins on equal specificity. */
+.mobile-sticky-bar.suppressed {
+    transform: translateY(100%);
+    pointer-events: none;
+}
 .mobile-sticky-bar .btn {
     flex: 1;
-    min-height: 46px;
+    min-height: 44px;
     font-size: 0.9rem;
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 1rem;
 }
 
 /* ============================================================
@@ -1557,7 +1571,6 @@ h1, h2, h3, h4 { overflow-wrap: break-word; }
 /* ===== Sticky Category Nav ===== */
 .category-nav {
     position: sticky;
-    /* Match the shrunk header so the chips never slide under it */
     top: var(--header-h-scrolled);
     z-index: 90;
     background: var(--clr-bg);
@@ -2375,7 +2388,7 @@ h1, h2, h3, h4 { overflow-wrap: break-word; }
     .category-nav { top: var(--header-h-scrolled); }
 
     .site-footer {
-        padding-bottom: calc(var(--mobile-sticky-h) + env(safe-area-inset-bottom, 0));
+        padding-bottom: calc(var(--mobile-sticky-h) + env(safe-area-inset-bottom, 0px));
     }
 
     .hero.hero-dark {

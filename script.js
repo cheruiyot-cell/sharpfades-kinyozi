@@ -24,6 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const stickyBarThreshold = 150;
     const backToTopThreshold = 400;
 
+    // --- Sticky bar state ---------------------------------------------------
+    // Track scroll direction so the bar only appears when the user scrolls UP
+    // (a strong signal they're looking for an action), then hides on scroll
+    // down. A separate IntersectionObserver suppresses the bar entirely when
+    // another full WhatsApp CTA is already visible, so we never show two
+    // booking paths at once.
+    let lastScrollY = window.scrollY;
+    let scrollDirection = 'up'; // default to 'up' so a fresh load at depth still shows the bar
+    const SCROLL_DIRECTION_THRESHOLD = 5; // px of accumulated delta before direction flips
+
     // ===== Analytics =====
     function trackEvent(eventName, params = {}) {
         if (typeof window.gtag === 'function') {
@@ -65,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrolled = window.scrollY;
 
         if (header) header.classList.toggle('scrolled', scrolled > scrollOffset);
-        if (mobileStickyBar) mobileStickyBar.classList.toggle('visible', scrolled > stickyBarThreshold);
         if (backToTop) backToTop.classList.toggle('visible', scrolled > backToTopThreshold);
 
         if (progressBar) {
@@ -77,6 +86,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroImage && !prefersReducedMotion) {
             const factor = isMobile ? 0.05 : 0.15;
             heroImage.style.transform = `translateY(${scrolled * factor}px)`;
+        }
+
+        // --- Direction-aware sticky bar -------------------------------------
+        if (mobileStickyBar) {
+            // Accumulate small deltas until they exceed the threshold, then flip
+            // direction. Reading `lastScrollY` only when the threshold is hit
+            // means tiny trackpad/pinch scrolls accumulate naturally.
+            const delta = scrolled - lastScrollY;
+            if (Math.abs(delta) >= SCROLL_DIRECTION_THRESHOLD) {
+                scrollDirection = delta > 0 ? 'down' : 'up';
+                lastScrollY = scrolled;
+            }
+
+            const pastThreshold = scrolled > stickyBarThreshold;
+            const shouldShow = pastThreshold && scrollDirection === 'up';
+            mobileStickyBar.classList.toggle('visible', shouldShow);
         }
 
         ticking = false;
@@ -94,6 +119,33 @@ document.addEventListener('DOMContentLoaded', () => {
         backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: scrollBehavior });
         });
+    }
+
+    // ===== Context-aware sticky bar suppression =====
+    // If a section that already contains a big WhatsApp CTA is in the viewport,
+    // hide the sticky bar so we don't double up on booking prompts.
+    if (mobileStickyBar && 'IntersectionObserver' in window) {
+        const ctaSections = document.querySelectorAll(
+            '.final-cta, .booking-section, .blog-cta, .policy-cta'
+        );
+
+        if (ctaSections.length) {
+            const visibleCTAs = new Set();
+            const ctaObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) visibleCTAs.add(entry.target);
+                    else visibleCTAs.delete(entry.target);
+                });
+                mobileStickyBar.classList.toggle('suppressed', visibleCTAs.size > 0);
+            }, {
+                // Trigger suppression slightly before the section is fully on
+                // screen so the bar is already gone by the time the CTA reads.
+                rootMargin: '0px 0px -15% 0px',
+                threshold: 0
+            });
+
+            ctaSections.forEach(el => ctaObserver.observe(el));
+        }
     }
 
     // ===== Mobile Menu =====
